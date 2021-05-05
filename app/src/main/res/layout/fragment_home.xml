@@ -4,5 +4,23 @@
     android:id="@+id/home_fragment"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-    <!--tools:context=".MainActivity"-->
+    android:layout_height="match_parent"
+
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    map:cameraTargetLat="41.9"
+    map:cameraTargetLng="12.5"
+    map:cameraBearing="0"
+    map:cameraTilt="45"
+    map:cameraZoom="10"
+    map:mapType="hybrid"
+    map:uiCompass="true"
+
+    map:uiRotateGestures="true"
+    map:uiScrollGestures="true"
+    map:uiTiltGestures="true"
+    map:uiZoomControls="true"
+    map:uiZoomGestures="true"/>
+
+    <!--tools:context=".MainActivity"
+
+    map:zOrderOnTop="false" // per mettere container davanti?-->
