@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerCategories">
+        <item>Potholes</item>
+        <item>Road signes</item>
+        <item>Other road problems</item>
+        <item>Vegetation</item>
+        <item>Fauna</item>
+        <item>Infrastructure failure</item>
+        <item>Garbage</item>
+        <item>Other</item>
+    </string-array>
+</resources>

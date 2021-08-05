@@ -12,14 +12,16 @@
     map:cameraBearing="0"
     map:cameraTilt="45"
     map:cameraZoom="10"
-    map:mapType="hybrid"
+    map:mapType="normal"
     map:uiCompass="true"
 
     map:uiRotateGestures="true"
     map:uiScrollGestures="true"
     map:uiTiltGestures="true"
     map:uiZoomControls="true"
-    map:uiZoomGestures="true"/>
+    map:uiZoomGestures="true"
+
+    />
 
     <!--tools:context=".MainActivity"
 

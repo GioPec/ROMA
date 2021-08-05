@@ -1,0 +1,6 @@
+- public static dizionario accessibile ovunque che come chiave ha il nome degli utenti, e come contenuto
+una lista di tuple (attributo, valore).
+Esempio: key:"Anna", value: [(nome_segnalazione, "Buca Roma"), (testo_segnalazione, "buca profonda bla bla bla..."), ...]
+Questo serve nella funzione "aggiungi cardView" che prende le info da questo dizionario.
+
+- circular image in profile
