@@ -66,6 +66,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE) selectedImageUri = data.getData();
+
+        MainActivity.imageView3.setImageURI(selectedImageUri);
     }
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -112,41 +114,50 @@ public class HomeFragment extends Fragment {
             LatLng ll1 = new LatLng(41.9, 12.5);
             marker1 = googleMap.addMarker(new MarkerOptions()
                     .position(ll1)
-                    .title("BUCA")
-                    .snippet("CATEGORIA1")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                    .snippet("Buca")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                     );
 
             LatLng ll2 = new LatLng(41.88, 12.42);
             marker2 = googleMap.addMarker(new MarkerOptions()
                     .position(ll2)
-                    .title("BUCA")
-                    .snippet("CATEGORIA2")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                    .snippet("Segnaletica")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
             );
 
             LatLng ll3 = new LatLng(41.81, 12.54);
             marker3 = googleMap.addMarker(new MarkerOptions()
                     .position(ll3)
-                    .title("BUCA")
-                    .snippet("CATEGORIA3")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+                    .snippet("Altro problema stradale")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
             );
 
             LatLng ll4 = new LatLng(41.90, 12.55);
             marker4 = googleMap.addMarker(new MarkerOptions()
                     .position(ll4)
-                    .title("ALBERO")
-                    .snippet("CATEGORIA4")
+                    .snippet("Vegetazione")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
             );
 
             LatLng ll5 = new LatLng(41.75, 12.40);
             marker5 = googleMap.addMarker(new MarkerOptions()
                     .position(ll5)
-                    .title("BUCA")
-                    .snippet("CATEGORIA5")
+                    .snippet("Fauna")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+            );
+
+            LatLng ll6 = new LatLng(41.78, 12.45);
+            marker5 = googleMap.addMarker(new MarkerOptions()
+                    .position(ll6)
+                    .snippet("Guasto")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+            );
+
+            LatLng ll7 = new LatLng(41.71, 12.39);
+            marker5 = googleMap.addMarker(new MarkerOptions()
+                    .position(ll7)
+                    .snippet("Immondizia")
+                    .icon(BitmapDescriptorFactory.defaultMarker(305.0f))
             );
 
             if (popupTitolo!=null) {
@@ -221,6 +232,8 @@ public class HomeFragment extends Fragment {
                     newMarker.setSnippet(HomeFragment.popupCategoria);
                     newMarker.setTag(selectedImageUri);
 
+                    MainActivity.imageView3.setImageURI(null);
+
                     MainActivity.popupNewReport.setVisibility(View.INVISIBLE);
 
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(popupLatLngMarker, 12));
@@ -258,57 +271,67 @@ public class HomeFragment extends Fragment {
                     int firstPopUpVisibility = MainActivity.reportPopupCard.getVisibility();
                     if (firstPopUpVisibility==View.INVISIBLE) newVisibility=View.VISIBLE;
                     //else newVisibility=View.INVISIBLE;
-                    if (marker.getSnippet().equals("CATEGORIA1"))
+                    if (marker.getSnippet().equals("Buca"))
                     {
-                        MainActivity.titoloReportPopup.setText("TITOLO");
-                        MainActivity.categoriaReportPopup.setText("Categoria1");
-                        MainActivity.descrizioneReportPopup.setText("Descrizione bella della Categoria1 -\n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget felis quis arcu euismod gravida eu vitae metus. Nullam dignissim dapibus lorem, in pulvinar leo faucibus quis. Vivamus lacinia, mauris ut vulputate lacinia, enim urna euismod sem, ut vulputate massa quam at ex. Ut vitae eleifend est, in interdum elit. Maecenas imperdiet tortor mauris, sagittis molestie tortor fermentum ac. Phasellus facilisis tempor ipsum nec congue. Aenean eget nulla interdum, posuere nisl fermentum, vestibulum enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget varius nisl, euismod luctus purus. Curabitur id tincidunt nulla, non lacinia libero. Suspendisse potenti. In varius condimentum velit non dictum. Pellentesque varius accumsan lectus lobortis sagittis.");
-                        //MainActivity.reportPopupCard.setBackgroundColor(0xFF930000);    //red
-                        MainActivity.reportPopupCard.setStrokeColor(0xFF930000);    //red
-                        //MainActivity.fotoReportPopup.setImageBitmap();
-                        MainActivity.reportPopupCard.setVisibility(newVisibility);
-                    }
-                    else if (marker.getSnippet().equals("CATEGORIA2"))
-                    {
-                        MainActivity.titoloReportPopup.setText("TITOLO");
-                        MainActivity.categoriaReportPopup.setText("Categoria2");
-                        MainActivity.descrizioneReportPopup.setText("Descrizione bella della Categoria2");
-                        //MainActivity.reportPopupCard.setBackgroundColor(0xFF0000FF);    //blue
+                        MainActivity.titoloReportPopup.setText("Attenzione! Buca profonda al lato della strada!");
+                        MainActivity.categoriaReportPopup.setText("Buca");
+                        MainActivity.descrizioneReportPopup.setText("Fate attenzione all'angolo tra via delle Priule e via delle Violette, soprattutto se viaggiate in moto...");
                         MainActivity.reportPopupCard.setStrokeColor(0xFF0000FF);    //blue
-                        //MainActivity.fotoReportPopup.setImageBitmap();
-                        MainActivity.reportPopupCard.setVisibility(newVisibility);
-                    }
-                    else if (marker.getSnippet().equals("CATEGORIA3"))
-                    {
-                        MainActivity.titoloReportPopup.setText("TITOLO");
-                        MainActivity.categoriaReportPopup.setText("Categoria3");
-                        MainActivity.descrizioneReportPopup.setText("Descrizione bella della Categoria3");
-                        //MainActivity.reportPopupCard.setBackgroundColor(0xFFFFFF00);    //yellow
-                        MainActivity.reportPopupCard.setStrokeColor(0xFFFFFF00);    //yellow
-                        //MainActivity.fotoReportPopup.setImageBitmap();
-                        MainActivity.reportPopupCard.setVisibility(newVisibility);
-                    }
-                    else if (marker.getSnippet().equals("CATEGORIA4"))
-                    {
-                        MainActivity.titoloReportPopup.setText("TITOLO");
-                        MainActivity.categoriaReportPopup.setText("Categoria4");
-                        MainActivity.descrizioneReportPopup.setText("Descrizione bella della Categoria4");
-                        //MainActivity.reportPopupCard.setBackgroundColor(0xFF00FF00);    //green
-                        MainActivity.reportPopupCard.setStrokeColor(0xFF00FF00);    //green
-                        //MainActivity.fotoReportPopup.setImageBitmap();
-                        MainActivity.reportPopupCard.setVisibility(newVisibility);
-                    }
-                    else if (marker.getSnippet().equals("CATEGORIA5"))
-                    {
-                        MainActivity.titoloReportPopup.setText("TITOLO");
-                        MainActivity.categoriaReportPopup.setText("Categoria5");
-                        MainActivity.descrizioneReportPopup.setText("Descrizione bella della Categoria5");
-                        //File imgFile = new File("..\\..\\src\\main\\res\\drawable-v24\\buca");
-                        //MainActivity.immaginePopup.setImageURI(Uri.fromFile(imgFile));
                         MainActivity.immaginePopup.setImageResource(R.drawable.buca);
-                        //MainActivity.reportPopupCard.setBackgroundColor(0xFFFF9900);    //orange
-                        MainActivity.reportPopupCard.setStrokeColor(0xFFFF9900);    //orange
-                        //MainActivity.fotoReportPopup.setImageBitmap();
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Segnaletica"))
+                    {
+                        MainActivity.titoloReportPopup.setText("Mi è arrivata la multa, ma il cartello non si vedeva..");
+                        MainActivity.categoriaReportPopup.setText("Segnaletica");
+                        MainActivity.descrizioneReportPopup.setText("In questo tratto di strada il sorpasso è proibito. Peccato che non è segnalato, o meglio, il cartello che dovrebbe avvisare di ciò è stato...");
+                        MainActivity.reportPopupCard.setStrokeColor(0xFFFFFF00);    //yellow
+                        MainActivity.immaginePopup.setImageResource(R.drawable.segnaletica);
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Altro problema stradale"))
+                    {
+                        MainActivity.titoloReportPopup.setText("Sono dieci mesi che non funziona! Fate qualcosa!");
+                        MainActivity.categoriaReportPopup.setText("Altro problema stradale");
+                        MainActivity.descrizioneReportPopup.setText("È passato quasi un anno e ancora nessuna traccia di intervento da parte del comune. Tutte le sere tornando a casa ho paura...");
+                        MainActivity.reportPopupCard.setStrokeColor(0xFF800080);    //violet
+                        MainActivity.immaginePopup.setImageResource(R.drawable.altroproblemastradale);
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Vegetazione"))
+                    {
+                        MainActivity.titoloReportPopup.setText("Mia nonna non riesce più a percorrerlo");
+                        MainActivity.categoriaReportPopup.setText("Vegetazione");
+                        MainActivity.descrizioneReportPopup.setText("Come da titolo, faccio questa segnalazione per portare alla vostra attenzione un problema urgente di degrado urbano...");
+                        MainActivity.reportPopupCard.setStrokeColor(0xFF00FF00);    //green
+                        MainActivity.immaginePopup.setImageResource(R.drawable.vegetazione);
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Fauna"))
+                    {
+                        MainActivity.titoloReportPopup.setText("Fate attenzione, avvistati cinghiali in zona!!");
+                        MainActivity.categoriaReportPopup.setText("Fauna");
+                        MainActivity.descrizioneReportPopup.setText("In 60 anni non ho mai visto una roba del genere, ormai non hanno manco più paura delle macchine! O li catturate o me li mangio...");
+                        MainActivity.immaginePopup.setImageResource(R.drawable.fauna);
+                        MainActivity.reportPopupCard.setStrokeColor(0xFFFC6A03);    //orange
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Guasto"))
+                    {
+                        MainActivity.titoloReportPopup.setText("Mettetele in funzione una volta per tutte!");
+                        MainActivity.categoriaReportPopup.setText("Guasto");
+                        MainActivity.descrizioneReportPopup.setText("Non le ho mai viste in funzione, mi tocca sempre prendere le scale a piedi. È un disagio per me e per molti altri pendolari...");
+                        MainActivity.immaginePopup.setImageResource(R.drawable.guasto);
+                        MainActivity.reportPopupCard.setStrokeColor(0xFFD0312D);    //red
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Immondizia"))
+                    {
+                        MainActivity.titoloReportPopup.setText("Vergogna!!!");
+                        MainActivity.categoriaReportPopup.setText("Immondizia");
+                        MainActivity.descrizioneReportPopup.setText("Devo fare lo slalom per uscire di casa!!");
+                        MainActivity.immaginePopup.setImageResource(R.drawable.immondizia);
+                        MainActivity.reportPopupCard.setStrokeColor(0xFFA1045A);    //purple
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
                     }
                     else
@@ -318,12 +341,10 @@ public class HomeFragment extends Fragment {
                             MainActivity.categoriaReportPopup.setText(popupCategoria);
                             MainActivity.descrizioneReportPopup.setText(popupDescrizione);
                             MainActivity.immaginePopup.setImageURI(selectedImageUri);
-                            //MainActivity.reportPopupCard.setBackgroundColor(0xFFFF9900);    //
-                            MainActivity.reportPopupCard.setStrokeColor(0xFF800080);    //
-                            //MainActivity.fotoReportPopup.setImageBitmap();
+                            MainActivity.reportPopupCard.setStrokeColor(0xFF800080);    //TODO
                             MainActivity.reportPopupCard.setVisibility(newVisibility);
                         }
-                        else {
+                        else {  //altro
                             MainActivity.titoloReportPopup.setText(popupTitolo);
                             MainActivity.categoriaReportPopup.setText(popupCategoria);
                             MainActivity.descrizioneReportPopup.setText(popupDescrizione);

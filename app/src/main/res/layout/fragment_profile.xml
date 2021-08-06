@@ -398,7 +398,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView2"
+                                android:id="@+id/textView1_1"
                                 android:layout_width="27dp"
                                 android:layout_height="27dp"
                                 android:layout_marginStart="220dp"
@@ -446,7 +446,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!--app:cardBackgroundColor="#3B930000"-->
+            <!-- app:cardBackgroundColor="#3B339300"-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview2"
                 style="@style/Base.CardView"
@@ -454,19 +454,23 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
 
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.473"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.021">
+                app:layout_constraintVertical_bias="0.021"
+                app:strokeColor="#00FF19"
+                app:strokeWidth="3dp">
 
                 <!--This is a ConstraintLayout for the entire CardView
                        including the expandable portion-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview2"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.511"
                     tools:layout_editor_absoluteX="-55dp">
@@ -486,7 +490,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0">
 
-
                         <ImageView
                             android:id="@+id/icon2"
                             android:layout_width="150dp"
@@ -499,49 +502,45 @@
                             app:layout_constraintTop_toTopOf="@+id/fixed_layout2"
                             app:layout_constraintVertical_bias="0.0" />
 
-                        <TextView
-                            android:id="@+id/heading2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Object2"
-                            android:textColor="#006600"
-                            android:textSize="25dp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
-                            app:layout_constraintEnd_toEndOf="@+id/fixed_layout2"
-                            app:layout_constraintHorizontal_bias="0.926"
-                            app:layout_constraintStart_toStartOf="@+id/fixed_layout2"
-                            app:layout_constraintTop_toTopOf="@+id/fixed_layout2"
-                            app:layout_constraintVertical_bias="0.198" />
+                        <!--This is ImageButton for the expansion icon.-->
 
                         <TextView
                             android:id="@+id/list_of_subjects2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="58dp"
-                            android:text="List of subjects"
+                            android:layout_marginBottom="104dp"
+                            android:text="Immondizia"
                             android:textSize="20dp"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.878"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/heading2"
-                            app:layout_constraintVertical_bias="0.0" />
+                            app:layout_constraintHorizontal_bias="0.183"
+                            app:layout_constraintStart_toEndOf="@+id/icon2" />
 
-                        <!--This is ImageButton for the expansion icon.-->
+                        <TextView
+                            android:id="@+id/list_of_subjects_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="60dp"
+                            android:text="Segnalato"
+                            android:textColor="#AF0808"
+                            android:textSize="20dp"
+                            android:textStyle="normal|italic"
+                            app:layout_constraintStart_toEndOf="@+id/icon2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <ImageButton
                             android:id="@+id/arrow_button2"
-                            android:layout_width="41dp"
-                            android:layout_height="35dp"
+                            android:layout_width="38dp"
+                            android:layout_height="36dp"
                             android:background="#0000"
                             android:src="@drawable/ic_baseline_arrow_drop_down_24"
                             app:layout_constraintBottom_toBottomOf="@id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.949"
+                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/list_of_subjects2"
-                            app:layout_constraintVertical_bias="0.0" />
+                            app:layout_constraintVertical_bias="0.764" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -560,80 +559,79 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fixed_layout2">
 
-                        <!--Child LinearLayout 1-->
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:src="@drawable/trash" />
+                                android:id="@+id/imageView2"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/trash"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
+                                android:id="@+id/textView2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="20dp"
-                                android:text="Database Management"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Utente consapevole"
                                 android:textColor="#000000"
-                                android:textSize="20dp" />
-                        </LinearLayout>
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                        <!--Child LinearLayout 2-->
-                        <LinearLayout
+                            <TextView
+                                android:id="@+id/textView2_2"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="220dp"
+                                android:layout_marginTop="8dp"
+                                android:text="1h"
+                                android:textColor="#A1A1A1"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.753"
+                                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout2_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:src="@drawable/trash" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="20dp"
-                                android:text="Data Structures"
-                                android:textColor="#000000"
-                                android:textSize="20dp" />
-                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/textView2_2_2"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Mecella se ne po' andà affanculo. Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo.
+                                        Mecella se ne po' andà affanculo."
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-                        <!--Child LinearLayout 3-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:src="@drawable/trash" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="20dp"
-                                android:text="Operating Systems"
-                                android:textColor="#000000"
-                                android:textSize="20dp" />
-                        </LinearLayout>
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static ImageView immaginePopup;
 
+    public static ImageView imageView3;
+
     public static Window theWindow;
 
     @Override
@@ -78,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         popupUrgente = findViewById(R.id.checkBox);
 
         immaginePopup = findViewById(R.id.imageView1);
+
+        imageView3 = findViewById(R.id.imageView3);
 
         bottoneConferma = findViewById(R.id.button3);
         buttonImage = findViewById(R.id.buttonImage);

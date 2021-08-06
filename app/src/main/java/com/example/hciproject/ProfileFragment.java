@@ -30,6 +30,11 @@ public class ProfileFragment extends Fragment {
     ImageView immagineHidden;
     com.google.android.material.card.MaterialCardView cardHidden;
 
+    public static ImageView profileImage;
+    public static ImageView imageView_hidden_1;
+    public static ImageView imageView;
+    public static ImageView imageView2;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +43,16 @@ public class ProfileFragment extends Fragment {
 
         MaterialTextView usernameEditText = view.findViewById(R.id.profileUsername);
         usernameEditText.setText(LoginActivity.UTENTE);
+
+        profileImage = view.findViewById(R.id.profileImage);
+        imageView_hidden_1 = view.findViewById(R.id.imageView_hidden_1);
+        imageView = view.findViewById(R.id.imageView);
+        imageView2 = view.findViewById(R.id.imageView2);
+
+        profileImage.setImageURI(RegistrationActivity.profileImage);
+        imageView_hidden_1.setImageURI(RegistrationActivity.profileImage);
+        imageView.setImageURI(RegistrationActivity.profileImage);
+        imageView2.setImageURI(RegistrationActivity.profileImage);
 
         /////////////////////////////////////////////////////////////
 
