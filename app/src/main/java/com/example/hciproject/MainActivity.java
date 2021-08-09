@@ -22,9 +22,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,10 +58,31 @@ public class MainActivity extends AppCompatActivity {
 
     public static Window theWindow;
 
+    public static Map<String, Integer> colorsDictionary = new HashMap<String, Integer>();
+    public static Map<String, Float> colorsMarkersDictionary = new HashMap<String, Float>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        colorsDictionary.put("Buca", 0xFF0000FF);
+        colorsDictionary.put("Segnaletica", 0xFFFFFF00);
+        colorsDictionary.put("Altro problema stradale", 0xFF800080);
+        colorsDictionary.put("Vegetazione", 0xFF00FF00);
+        colorsDictionary.put("Fauna", 0xFFFC6A03);
+        colorsDictionary.put("Guasto", 0xFFD0312D);
+        colorsDictionary.put("Immondizia", 0xFFA1045A);
+        colorsDictionary.put("Altro", 0xFFFFFFFF);
+
+        colorsMarkersDictionary.put("Buca", BitmapDescriptorFactory.HUE_BLUE);
+        colorsMarkersDictionary.put("Segnaletica", BitmapDescriptorFactory.HUE_YELLOW);
+        colorsMarkersDictionary.put("Altro problema stradale", BitmapDescriptorFactory.HUE_VIOLET);
+        colorsMarkersDictionary.put("Vegetazione", BitmapDescriptorFactory.HUE_GREEN);
+        colorsMarkersDictionary.put("Fauna", 15.0f);
+        colorsMarkersDictionary.put("Guasto", BitmapDescriptorFactory.HUE_ORANGE);
+        colorsMarkersDictionary.put("Immondizia", 305.0f);
+        colorsMarkersDictionary.put("Altro", 175.0f);
 
         theWindow = getWindow();
 

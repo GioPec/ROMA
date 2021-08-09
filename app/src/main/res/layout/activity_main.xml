@@ -43,6 +43,7 @@
             android:layout_height="172dp"
             android:layout_marginTop="8dp"
             android:translationZ="1dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,8 +84,8 @@
                     android:layout_marginTop="8dp"
                     android:onClick="onClickShowProfile"
                     android:text="Titolo"
-                    android:textStyle="italic"
                     android:textSize="16sp"
+                    android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView1"
                     app:layout_constraintTop_toTopOf="parent"
@@ -125,7 +126,7 @@
             android:layout_width="375dp"
             android:layout_height="590dp"
             android:translationZ="1dp"
-            android:visibility="gone"
+            android:visibility="invisible"
             app:cardCornerRadius="16dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -161,9 +162,9 @@
 
                 <EditText
                     android:id="@+id/editTextTextPersonName2"
-                    android:layout_width="302dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="303dp"
+                    android:layout_height="204dp"
+                    android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="Descrizione"
                     android:inputType="text|textMultiLine"
@@ -175,45 +176,46 @@
                     android:id="@+id/spinner"
                     android:layout_width="304dp"
                     android:layout_height="37dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+                <!--android:onClick="confermaPopup"-->
 
                 <CheckBox
                     android:id="@+id/checkBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="16dp"
                     android:text="Urgente"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintHorizontal_bias="0.122"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-                <!--android:onClick="confermaPopup"-->
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="260dp"
+                    android:layout_marginTop="40dp"
                     android:onClick="AnnullaPopup"
                     android:text="Annulla"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.191"
+                    app:layout_constraintHorizontal_bias="0.132"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonImage"
                     app:strokeColor="#ACACAC" />
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="260dp"
+                    android:layout_marginTop="104dp"
                     android:text="Conferma"
 
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.644"
+                    app:layout_constraintHorizontal_bias="0.708"
                     app:layout_constraintStart_toEndOf="@+id/button2"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
@@ -221,21 +223,22 @@
                     android:id="@+id/buttonImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:text="Carica foto"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.148"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="128dp"
-                    android:layout_height="128dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_width="112dp"
+                    android:layout_height="113dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintHorizontal_bias="0.866"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

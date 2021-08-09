@@ -28,6 +28,8 @@ public class ProfileFragment extends Fragment {
     TextView descrizioneHidden;
     TextView categoriaHidden;
     ImageView immagineHidden;
+    ImageView urgenteHidden;
+    TextView titoloHidden;
     com.google.android.material.card.MaterialCardView cardHidden;
 
     public static ImageView profileImage;
@@ -43,6 +45,12 @@ public class ProfileFragment extends Fragment {
 
         MaterialTextView usernameEditText = view.findViewById(R.id.profileUsername);
         usernameEditText.setText(LoginActivity.UTENTE);
+        MaterialTextView usernameEditText2 = view.findViewById(R.id.textView);
+        usernameEditText2.setText(LoginActivity.UTENTE);
+        MaterialTextView usernameEditText3 = view.findViewById(R.id.textView2);
+        usernameEditText3.setText(LoginActivity.UTENTE);
+        MaterialTextView usernameEditText4 = view.findViewById(R.id.textView_hidden_1);
+        usernameEditText4.setText(LoginActivity.UTENTE);
 
         profileImage = view.findViewById(R.id.profileImage);
         imageView_hidden_1 = view.findViewById(R.id.imageView_hidden_1);
@@ -60,12 +68,17 @@ public class ProfileFragment extends Fragment {
             descrizioneHidden = view.findViewById(R.id.textView1_hidden_1);
             categoriaHidden = view.findViewById(R.id.list_of_subjects1_hidden);
             immagineHidden  = view.findViewById(R.id.icon1_hidden);
+            titoloHidden = view.findViewById(R.id.textView1_hidden_1_1);
+            urgenteHidden = view.findViewById(R.id.imageViewUrg);
 
             descrizioneHidden.setText(HomeFragment.popupDescrizione);
             categoriaHidden.setText(HomeFragment.popupCategoria);
+            titoloHidden.setText(HomeFragment.popupTitolo);
             immagineHidden.setImageURI(HomeFragment.selectedImageUri);
+            if (HomeFragment.popupUrgente) urgenteHidden.setVisibility(View.VISIBLE);
 
             cardHidden = view.findViewById(R.id.base_cardview_hidden_1);
+            cardHidden.setStrokeColor((MainActivity.colorsDictionary.get(HomeFragment.popupCategoria)));
             cardHidden.setVisibility(View.VISIBLE);
         }
 

@@ -232,6 +232,8 @@ public class HomeFragment extends Fragment {
                     newMarker.setSnippet(HomeFragment.popupCategoria);
                     newMarker.setTag(selectedImageUri);
 
+                    newMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MainActivity.colorsMarkersDictionary.get(popupCategoria))); //cambio colore marker
+
                     MainActivity.imageView3.setImageURI(null);
 
                     MainActivity.popupNewReport.setVisibility(View.INVISIBLE);
@@ -271,11 +273,20 @@ public class HomeFragment extends Fragment {
                     int firstPopUpVisibility = MainActivity.reportPopupCard.getVisibility();
                     if (firstPopUpVisibility==View.INVISIBLE) newVisibility=View.VISIBLE;
                     //else newVisibility=View.INVISIBLE;
-                    if (marker.getSnippet().equals("Buca"))
+
+                    if (marker.getTag()!=null && marker.getTag()==selectedImageUri) {    //marker aggiunto dall'utente
+                        MainActivity.titoloReportPopup.setText(popupTitolo);
+                        MainActivity.categoriaReportPopup.setText(popupCategoria);
+                        MainActivity.descrizioneReportPopup.setText(popupDescrizione);
+                        MainActivity.immaginePopup.setImageURI(selectedImageUri);
+                        MainActivity.reportPopupCard.setStrokeColor(MainActivity.colorsDictionary.get(popupCategoria));
+                        MainActivity.reportPopupCard.setVisibility(newVisibility);
+                    }
+                    else if (marker.getSnippet().equals("Buca"))
                     {
                         MainActivity.titoloReportPopup.setText("Attenzione! Buca profonda al lato della strada!");
                         MainActivity.categoriaReportPopup.setText("Buca");
-                        MainActivity.descrizioneReportPopup.setText("Fate attenzione all'angolo tra via delle Priule e via delle Violette, soprattutto se viaggiate in moto...");
+                        MainActivity.descrizioneReportPopup.setText("Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto...");
                         MainActivity.reportPopupCard.setStrokeColor(0xFF0000FF);    //blue
                         MainActivity.immaginePopup.setImageResource(R.drawable.buca);
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -333,26 +344,6 @@ public class HomeFragment extends Fragment {
                         MainActivity.immaginePopup.setImageResource(R.drawable.immondizia);
                         MainActivity.reportPopupCard.setStrokeColor(0xFFA1045A);    //purple
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
-                    }
-                    else
-                    {
-                        if (marker.getTag()==selectedImageUri) {    //marker aggiunto dall'utente
-                            MainActivity.titoloReportPopup.setText(popupTitolo);
-                            MainActivity.categoriaReportPopup.setText(popupCategoria);
-                            MainActivity.descrizioneReportPopup.setText(popupDescrizione);
-                            MainActivity.immaginePopup.setImageURI(selectedImageUri);
-                            MainActivity.reportPopupCard.setStrokeColor(0xFF800080);    //TODO
-                            MainActivity.reportPopupCard.setVisibility(newVisibility);
-                        }
-                        else {  //altro
-                            MainActivity.titoloReportPopup.setText(popupTitolo);
-                            MainActivity.categoriaReportPopup.setText(popupCategoria);
-                            MainActivity.descrizioneReportPopup.setText(popupDescrizione);
-                            //MainActivity.reportPopupCard.setBackgroundColor(0xFFFF9900);    //
-                            MainActivity.reportPopupCard.setStrokeColor(0xFF800080);    //
-                            //MainActivity.fotoReportPopup.setImageBitmap();
-                            MainActivity.reportPopupCard.setVisibility(newVisibility);
-                        }
                     }
                     return true;    //false per centrare la camera e altro
                 }
