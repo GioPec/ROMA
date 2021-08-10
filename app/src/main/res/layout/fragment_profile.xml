@@ -167,6 +167,23 @@
                             app:srcCompat="@drawable/urgente" />
 
                         <ImageButton
+                            android:id="@+id/markerButton_hidden"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag=""
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
                             android:id="@+id/arrow_button1_hidden"
                             android:layout_width="38dp"
                             android:layout_height="36dp"
@@ -363,6 +380,23 @@
                             app:layout_constraintTop_toBottomOf="@+id/list_of_subjects1" />
 
                         <ImageButton
+                            android:id="@+id/markerButton"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Vegetazione"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
                             android:id="@+id/arrow_button1"
                             android:layout_width="38dp"
                             android:layout_height="36dp"
@@ -556,6 +590,23 @@
                             android:textSize="20dp"
                             android:textStyle="normal|italic"
                             app:layout_constraintStart_toEndOf="@+id/icon2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/markerButton2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Buca"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageButton

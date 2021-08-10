@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         colorsMarkersDictionary.put("Altro problema stradale", BitmapDescriptorFactory.HUE_VIOLET);
         colorsMarkersDictionary.put("Vegetazione", BitmapDescriptorFactory.HUE_GREEN);
         colorsMarkersDictionary.put("Fauna", 15.0f);
-        colorsMarkersDictionary.put("Guasto", BitmapDescriptorFactory.HUE_ORANGE);
+        colorsMarkersDictionary.put("Guasto", BitmapDescriptorFactory.HUE_RED);
         colorsMarkersDictionary.put("Immondizia", 305.0f);
         colorsMarkersDictionary.put("Altro", 175.0f);
 
@@ -173,15 +173,17 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+    /*
     public void createNewReport(View view) {
         Intent intent = new Intent(this, ReportActivity.class);
         startActivity(intent);
     }
+    */
 
     public void mostraTuttoOnClick(View view) {
         //AlphaAnimation buttonClick = new AlphaAnimation(0.2f, 1.0f);
         //view.startAnimation(buttonClick);
-        Intent intent = new Intent(this, ReportActivity.class);
+        Intent intent = new Intent(this, ExternalProfileActivity.class);
         startActivity(intent);
     }
 
@@ -215,4 +217,11 @@ public class MainActivity extends AppCompatActivity {
         popupNewReport.setVisibility(View.INVISIBLE);
     }
     */
+
+    public void mostraSullaMappa(View view) {
+        HomeFragment.caricamentoDaMarkerCategoria = view.getTag().toString();
+        HomeFragment.caricamentoDaMarker = true;
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

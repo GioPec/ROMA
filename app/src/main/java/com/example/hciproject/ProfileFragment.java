@@ -1,5 +1,6 @@
 package com.example.hciproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class ProfileFragment extends Fragment {
     ImageView immagineHidden;
     ImageView urgenteHidden;
     TextView titoloHidden;
+    ImageButton markerButtonHidden;
     com.google.android.material.card.MaterialCardView cardHidden;
 
     public static ImageView profileImage;
@@ -70,11 +72,13 @@ public class ProfileFragment extends Fragment {
             immagineHidden  = view.findViewById(R.id.icon1_hidden);
             titoloHidden = view.findViewById(R.id.textView1_hidden_1_1);
             urgenteHidden = view.findViewById(R.id.imageViewUrg);
+            markerButtonHidden = view.findViewById(R.id.markerButton_hidden);
 
             descrizioneHidden.setText(HomeFragment.popupDescrizione);
             categoriaHidden.setText(HomeFragment.popupCategoria);
             titoloHidden.setText(HomeFragment.popupTitolo);
             immagineHidden.setImageURI(HomeFragment.selectedImageUri);
+            markerButtonHidden.setTag(HomeFragment.popupCategoria);
             if (HomeFragment.popupUrgente) urgenteHidden.setVisibility(View.VISIBLE);
 
             cardHidden = view.findViewById(R.id.base_cardview_hidden_1);

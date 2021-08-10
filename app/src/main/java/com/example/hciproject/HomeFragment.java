@@ -57,6 +57,9 @@ public class HomeFragment extends Fragment {
 
     public static final int PICK_IMAGE = 1;
 
+    public static boolean caricamentoDaMarker = false;
+    public static String caricamentoDaMarkerCategoria;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -95,8 +98,8 @@ public class HomeFragment extends Fragment {
 
             // Map bounds
             LatLngBounds romeBounds = new LatLngBounds(
-                    new LatLng(41.77, 12.364), // SW bounds
-                    new LatLng(42.0, 12.65)  // NE bounds
+                    new LatLng(41.6, 12.2), // SW bounds
+                    new LatLng(42.2, 12.8)  // NE bounds
             );
             googleMap.setLatLngBoundsForCameraTarget(romeBounds);
             //googleMap.moveCamera(CameraUpdateFactory.newLatLng(rome));
@@ -165,8 +168,28 @@ public class HomeFragment extends Fragment {
                         .position(popupLatLngMarker)
                         .title(popupTitolo)
                         .snippet(popupCategoria)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
+                        .icon(BitmapDescriptorFactory.defaultMarker(MainActivity.colorsMarkersDictionary.get(popupCategoria)))
                 );
+                newMarker.setTag(selectedImageUri);
+            }
+
+            //////////////////////////////   caricamento da marker   ///////////////////////////////
+
+            if (caricamentoDaMarker) {
+                caricamentoDaMarker = false;
+                LatLng caricamentoLL;
+                switch (caricamentoDaMarkerCategoria) {
+                    case "Buca": caricamentoLL = new LatLng(41.9, 12.5); break;
+                    case "Segnaletica": caricamentoLL = new LatLng(41.88, 12.42); break;
+                    case "Altro problema stradale": caricamentoLL = new LatLng(41.81, 12.54); break;
+                    case "Vegetazione": caricamentoLL = new LatLng(41.90, 12.55); break;
+                    case "Fauna": caricamentoLL = new LatLng(41.75, 12.40); break;
+                    case "Guasto": caricamentoLL = new LatLng(41.78, 12.45); break;
+                    case "Immondizia": caricamentoLL = new LatLng(41.71, 12.39); break;
+                    case "Altro": caricamentoLL = new LatLng(42.006310, 12.357117); break;
+                    default: caricamentoLL = new LatLng(42.006310, 12.357117); break;
+                }
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(caricamentoLL, 17));
             }
 
             ////////////////////////////////////////////////////////////////////////////////////////
@@ -274,7 +297,8 @@ public class HomeFragment extends Fragment {
                     if (firstPopUpVisibility==View.INVISIBLE) newVisibility=View.VISIBLE;
                     //else newVisibility=View.INVISIBLE;
 
-                    if (marker.getTag()!=null && marker.getTag()==selectedImageUri) {    //marker aggiunto dall'utente
+                    if (marker.getTag()!=null && marker.getTag()==selectedImageUri)     //marker aggiunto dall'utente
+                    {
                         MainActivity.titoloReportPopup.setText(popupTitolo);
                         MainActivity.categoriaReportPopup.setText(popupCategoria);
                         MainActivity.descrizioneReportPopup.setText(popupDescrizione);
@@ -345,6 +369,7 @@ public class HomeFragment extends Fragment {
                         MainActivity.reportPopupCard.setStrokeColor(0xFFA1045A);    //purple
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
                     }
+                    else { }
                     return true;    //false per centrare la camera e altro
                 }
             });

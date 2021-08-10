@@ -5,6 +5,1297 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExternalProfileActivity"
-    android:background="@android:color/holo_red_light">
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profileUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Pippo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/settings"
+        android:adjustViewBounds="true"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:background="#0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/popupDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Segnalazioni dell'utente"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="380dp"
+        android:layout_height="421dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popupDescription">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- app:cardBackgroundColor="#3B339300"-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/base_cardview1"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.021"
+                app:strokeColor="#00FF19"
+                app:strokeWidth="3dp">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                       including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"
+                    tools:layout_editor_absoluteX="-55dp">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <!--This is ImageButton for the expansion icon.-->
+
+                        <ImageView
+                            android:id="@+id/icon1"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/vegetazione"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout1"
+                            app:layout_constraintEnd_toEndOf="@+id/fixed_layout1"
+                            app:layout_constraintHorizontal_bias="0.07"
+                            app:layout_constraintStart_toStartOf="@+id/fixed_layout1"
+                            app:layout_constraintTop_toTopOf="@+id/fixed_layout1" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="96dp"
+                            android:text="Vegetazione"
+                            android:textSize="23sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.152"
+                            app:layout_constraintStart_toEndOf="@+id/icon1" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:text="Segnalato"
+                            android:textColor="#AF0808"
+                            android:textSize="20dp"
+                            android:textStyle="normal|italic"
+                            app:layout_constraintStart_toEndOf="@+id/icon1"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects1" />
+
+                        <ImageButton
+                            android:id="@+id/markerButton"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Vegetazione"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/arrow_button1"
+                            android:layout_width="38dp"
+                            android:layout_height="36dp"
+                            android:background="#0000"
+                            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                            app:layout_constraintBottom_toBottomOf="@id/fixed_layout1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.95"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects1"
+                            app:layout_constraintVertical_bias="0.764" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout1">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Utente consapevole"
+                                android:textColor="#000000"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/imageView"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView1_1"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="220dp"
+                                android:layout_marginTop="8dp"
+                                android:text="1h"
+                                android:textColor="#A1A1A1"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.753"
+                                app:layout_constraintStart_toEndOf="@+id/imageView"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView1_1_1"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:textColor="#7C7C7C"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Come da titolo, faccio questa segnalazione per portare alla vostra attenzione un problema urgente di degrado urbano..."
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- app:cardBackgroundColor="#3B339300"-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/base_cardview2"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.021"
+                app:strokeColor="#0000FF"
+                app:strokeWidth="3dp">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                       including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"
+                    tools:layout_editor_absoluteX="-55dp">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <!--This is ImageButton for the expansion icon.-->
+
+                        <ImageView
+                            android:id="@+id/icon2"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/buca"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
+                            app:layout_constraintEnd_toEndOf="@+id/fixed_layout2"
+                            app:layout_constraintHorizontal_bias="0.064"
+                            app:layout_constraintStart_toStartOf="@+id/fixed_layout2"
+                            app:layout_constraintTop_toTopOf="@+id/fixed_layout2" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="100dp"
+                            android:text="Buca"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.089"
+                            app:layout_constraintStart_toEndOf="@+id/icon2" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="60dp"
+                            android:text="Risolto"
+                            android:textColor="#358838"
+                            android:textSize="20dp"
+                            android:textStyle="normal|italic"
+                            app:layout_constraintStart_toEndOf="@+id/icon2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/markerButton2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Buca"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/arrow_button2"
+                            android:layout_width="38dp"
+                            android:layout_height="36dp"
+                            android:background="#0000"
+                            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                            app:layout_constraintBottom_toBottomOf="@id/fixed_layout2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.95"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects2"
+                            app:layout_constraintVertical_bias="0.764" />
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:tooltipText="Urgente"
+                            app:layout_constraintStart_toEndOf="@+id/icon2"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects_2"
+                            app:srcCompat="@drawable/urgente" />/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout2">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Utente consapevole"
+                                android:textColor="#000000"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView2_2"
+                                android:layout_width="68dp"
+                                android:layout_height="26dp"
+                                android:layout_marginStart="220dp"
+                                android:layout_marginTop="8dp"
+                                android:text="3 sett."
+                                android:textColor="#A1A1A1"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.753"
+                                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout2_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView2_2_2_2"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:textColor="#7C7C7C"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView2_2_2"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto..."
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/base_cardview3"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.021"
+                app:strokeColor="#0000FF"
+                app:strokeWidth="3dp">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                       including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"
+                    tools:layout_editor_absoluteX="-55dp">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <!--This is ImageButton for the expansion icon.-->
+
+                        <ImageView
+                            android:id="@+id/icon3"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/buca"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout3"
+                            app:layout_constraintEnd_toEndOf="@+id/fixed_layout3"
+                            app:layout_constraintHorizontal_bias="0.064"
+                            app:layout_constraintStart_toStartOf="@+id/fixed_layout3"
+                            app:layout_constraintTop_toTopOf="@+id/fixed_layout3" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="100dp"
+                            android:text="Buca"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.089"
+                            app:layout_constraintStart_toEndOf="@+id/icon3" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="60dp"
+                            android:text="Risolto"
+                            android:textColor="#358838"
+                            android:textSize="20dp"
+                            android:textStyle="normal|italic"
+                            app:layout_constraintStart_toEndOf="@+id/icon3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/markerButton3"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Buca"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/arrow_button3"
+                            android:layout_width="38dp"
+                            android:layout_height="36dp"
+                            android:background="#0000"
+                            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                            app:layout_constraintBottom_toBottomOf="@id/fixed_layout3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.95"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects3"
+                            app:layout_constraintVertical_bias="0.764" />
+
+                        <ImageView
+                            android:id="@+id/imageView3_3"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:tooltipText="Urgente"
+                            app:layout_constraintStart_toEndOf="@+id/icon3"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects_3"
+                            app:srcCompat="@drawable/urgente" />/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout3">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Utente consapevole"
+                                android:textColor="#000000"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView3_3"
+                                android:layout_width="68dp"
+                                android:layout_height="26dp"
+                                android:layout_marginStart="220dp"
+                                android:layout_marginTop="8dp"
+                                android:text="3 sett."
+                                android:textColor="#A1A1A1"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.753"
+                                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout3_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView3_3_3_3"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:textColor="#7C7C7C"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView3_3_3"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto..."
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/base_cardview4"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.021"
+                app:strokeColor="#0000FF"
+                app:strokeWidth="3dp">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                       including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"
+                    tools:layout_editor_absoluteX="-55dp">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <!--This is ImageButton for the expansion icon.-->
+
+                        <ImageView
+                            android:id="@+id/icon4"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/buca"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout4"
+                            app:layout_constraintEnd_toEndOf="@+id/fixed_layout4"
+                            app:layout_constraintHorizontal_bias="0.064"
+                            app:layout_constraintStart_toStartOf="@+id/fixed_layout4"
+                            app:layout_constraintTop_toTopOf="@+id/fixed_layout4" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="100dp"
+                            android:text="Buca"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.089"
+                            app:layout_constraintStart_toEndOf="@+id/icon4" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="60dp"
+                            android:text="Risolto"
+                            android:textColor="#358838"
+                            android:textSize="20dp"
+                            android:textStyle="normal|italic"
+                            app:layout_constraintStart_toEndOf="@+id/icon4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/markerButton4"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Buca"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/arrow_button4"
+                            android:layout_width="38dp"
+                            android:layout_height="36dp"
+                            android:background="#0000"
+                            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                            app:layout_constraintBottom_toBottomOf="@id/fixed_layout4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.95"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects4"
+                            app:layout_constraintVertical_bias="0.764" />
+
+                        <ImageView
+                            android:id="@+id/imageView4_4"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:tooltipText="Urgente"
+                            app:layout_constraintStart_toEndOf="@+id/icon4"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects_4"
+                            app:srcCompat="@drawable/urgente" />/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout4">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView444"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Utente consapevole"
+                                android:textColor="#000000"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/imageView444"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView4_4"
+                                android:layout_width="68dp"
+                                android:layout_height="26dp"
+                                android:layout_marginStart="220dp"
+                                android:layout_marginTop="8dp"
+                                android:text="3 sett."
+                                android:textColor="#A1A1A1"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.753"
+                                app:layout_constraintStart_toEndOf="@+id/imageView444"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout4_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView4_4_4_4"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:textColor="#7C7C7C"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView4_4_4"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto..."
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/base_cardview5"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.021"
+                app:strokeColor="#0000FF"
+                app:strokeWidth="3dp">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                       including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"
+                    tools:layout_editor_absoluteX="-55dp">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                    of the CardView. The elements
+                    that lie within the fixed portion of the CardView
+                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <!--This is ImageButton for the expansion icon.-->
+
+                        <ImageView
+                            android:id="@+id/icon5"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/buca"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout5"
+                            app:layout_constraintEnd_toEndOf="@+id/fixed_layout5"
+                            app:layout_constraintHorizontal_bias="0.064"
+                            app:layout_constraintStart_toStartOf="@+id/fixed_layout5"
+                            app:layout_constraintTop_toTopOf="@+id/fixed_layout5" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="100dp"
+                            android:text="Buca"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixed_layout5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.089"
+                            app:layout_constraintStart_toEndOf="@+id/icon5" />
+
+                        <TextView
+                            android:id="@+id/list_of_subjects_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="60dp"
+                            android:text="Risolto"
+                            android:textColor="#358838"
+                            android:textSize="20dp"
+                            android:textStyle="normal|italic"
+                            app:layout_constraintStart_toEndOf="@+id/icon5"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/markerButton5"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:adjustViewBounds="true"
+                            android:background="#0000"
+                            android:onClick="mostraSullaMappa"
+                            android:tag="Buca"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/marker"
+                            android:tooltipText="Mostra sulla mappa"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/arrow_button5"
+                            android:layout_width="38dp"
+                            android:layout_height="36dp"
+                            android:background="#0000"
+                            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                            app:layout_constraintBottom_toBottomOf="@id/fixed_layout5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.95"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects5"
+                            app:layout_constraintVertical_bias="0.764" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:tooltipText="Urgente"
+                            app:layout_constraintStart_toEndOf="@+id/icon5"
+                            app:layout_constraintTop_toBottomOf="@+id/list_of_subjects_5"
+                            app:srcCompat="@drawable/urgente" />/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout5">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView5_5"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Utente consapevole"
+                                android:textColor="#000000"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/imageView5_5"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView5_5"
+                                android:layout_width="68dp"
+                                android:layout_height="26dp"
+                                android:layout_marginStart="220dp"
+                                android:layout_marginTop="8dp"
+                                android:text="3 sett."
+                                android:textColor="#A1A1A1"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.753"
+                                app:layout_constraintStart_toEndOf="@+id/imageView5_5"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/linearLayout5_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView5_5_5_5"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:textColor="#7C7C7C"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView5_5_5"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto..."
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

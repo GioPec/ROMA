@@ -10,18 +10,20 @@
     map:cameraTargetLat="41.9"
     map:cameraTargetLng="12.5"
     map:cameraBearing="0"
-    map:cameraTilt="45"
+
     map:cameraZoom="10"
     map:mapType="normal"
     map:uiCompass="true"
 
     map:uiRotateGestures="true"
     map:uiScrollGestures="true"
-    map:uiTiltGestures="true"
+    map:uiTiltGestures="false"
     map:uiZoomControls="true"
     map:uiZoomGestures="true"
 
     />
+
+    <!-- map:cameraTilt="45" -->
 
     <!--tools:context=".MainActivity"
 
