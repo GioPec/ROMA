@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         colorsDictionary.put("Vegetazione", 0xFF00FF00);
         colorsDictionary.put("Fauna", 0xFFFC6A03);
         colorsDictionary.put("Guasto", 0xFFD0312D);
-        colorsDictionary.put("Immondizia", 0xFFA1045A);
+        colorsDictionary.put("Immondizia", 0xFFFF1CAE);
         colorsDictionary.put("Altro", 0xFFFFFFFF);
 
         colorsMarkersDictionary.put("Buca", BitmapDescriptorFactory.HUE_BLUE);

@@ -317,7 +317,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Segnaletica"))
                     {
-                        MainActivity.titoloReportPopup.setText("Mi è arrivata la multa, ma il cartello non si vedeva..");
+                        MainActivity.titoloReportPopup.setText("Mi è arrivata la multa, ma il cartello non si vedeva...");
                         MainActivity.categoriaReportPopup.setText("Segnaletica");
                         MainActivity.descrizioneReportPopup.setText("In questo tratto di strada il sorpasso è proibito. Peccato che non è segnalato, o meglio, il cartello che dovrebbe avvisare di ciò è stato...");
                         MainActivity.reportPopupCard.setStrokeColor(0xFFFFFF00);    //yellow
@@ -346,7 +346,7 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Fate attenzione, avvistati cinghiali in zona!!");
                         MainActivity.categoriaReportPopup.setText("Fauna");
-                        MainActivity.descrizioneReportPopup.setText("In 60 anni non ho mai visto una roba del genere, ormai non hanno manco più paura delle macchine! O li catturate o me li mangio...");
+                        MainActivity.descrizioneReportPopup.setText("In 40 anni non ho mai visto una roba del genere, ormai non hanno manco più paura delle macchine! O li catturate o me li mangio...");
                         MainActivity.immaginePopup.setImageResource(R.drawable.fauna);
                         MainActivity.reportPopupCard.setStrokeColor(0xFFFC6A03);    //orange
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -366,7 +366,7 @@ public class HomeFragment extends Fragment {
                         MainActivity.categoriaReportPopup.setText("Immondizia");
                         MainActivity.descrizioneReportPopup.setText("Devo fare lo slalom per uscire di casa!!");
                         MainActivity.immaginePopup.setImageResource(R.drawable.immondizia);
-                        MainActivity.reportPopupCard.setStrokeColor(0xFFA1045A);    //purple
+                        MainActivity.reportPopupCard.setStrokeColor(0xFFFF1CAE);    //purple
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
                     }
                     else { }
