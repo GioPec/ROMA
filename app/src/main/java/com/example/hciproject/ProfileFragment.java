@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment {
 
         /////////////////////////////////////////////////////////////
 
-        if(HomeFragment.selectedImageUri != null) {
+        if (HomeFragment.selectedImageUri != null) {
             descrizioneHidden = view.findViewById(R.id.textView1_hidden_1);
             categoriaHidden = view.findViewById(R.id.list_of_subjects1_hidden);
             immagineHidden  = view.findViewById(R.id.icon1_hidden);

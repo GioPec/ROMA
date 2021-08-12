@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSubmit(View view) {
 
+        /*
         Snackbar.make(view, "Ciao " + UTENTE, Snackbar.LENGTH_SHORT)
                 .setAction("Chiudi", new View.OnClickListener() {
                     @Override
@@ -44,16 +46,29 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 }).show();
+        */
 
         String name = UserName.getText().toString();
         String pw = UserPassword.getText().toString();
 
-        UTENTE = UserName.getText().toString();
+        if ((name.equals(RegistrationActivity.USER_NAME) && !(pw.equals(RegistrationActivity.USER_PASSWORD)))) {
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("EXTRA_NAME", name);
-        intent.putExtra("EXTRA_PW", pw);
-        startActivity(intent);
+            Snackbar.make(view, "Password errata!", Snackbar.LENGTH_SHORT)
+                    .setAction("Chiudi", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }).show();
+        }
+        else  {
+            UTENTE = UserName.getText().toString();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("EXTRA_NAME", name);
+            intent.putExtra("EXTRA_PW", pw);
+            startActivity(intent);
+        }
     }
 
     public void onRegistrationClick(View view) {

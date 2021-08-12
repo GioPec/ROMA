@@ -38,6 +38,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 
@@ -53,7 +54,7 @@ public class HomeFragment extends Fragment {
     public static String popupCategoria;
     public static String popupDescrizione;
     public static boolean popupUrgente;
-    public static Uri selectedImageUri;
+    public static Uri selectedImageUri = null;
 
     public static final int PICK_IMAGE = 1;
 
@@ -63,6 +64,16 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        if (MainActivity.primaVolta) {
+            MainActivity.primaVolta = false;
+            Snackbar.make(getActivity().findViewById(android.R.id.content), "Per aggiungere una nuova segnalazione, tieni premuto sulla mappa", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Chiudi", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {}
+                    }).show();
+        }
+
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -93,13 +104,13 @@ public class HomeFragment extends Fragment {
             // TODO per la user position: https://developers.google.com/maps/documentation/android-sdk/current-place-tutorial
             googleMap.getUiSettings().setMapToolbarEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true); //false
-            googleMap.setMinZoomPreference(10);
+            googleMap.setMinZoomPreference(11);
             googleMap.setMaxZoomPreference(20);
 
             // Map bounds
             LatLngBounds romeBounds = new LatLngBounds(
-                    new LatLng(41.6, 12.2), // SW bounds
-                    new LatLng(42.2, 12.8)  // NE bounds
+                    new LatLng(41.629372, 12.140821), // SW bounds
+                    new LatLng(42.100291, 12.824020)  // NE bounds
             );
             googleMap.setLatLngBoundsForCameraTarget(romeBounds);
             //googleMap.moveCamera(CameraUpdateFactory.newLatLng(rome));
@@ -114,7 +125,7 @@ public class HomeFragment extends Fragment {
 
             ////////////////////////////////////////////////////////////////////////////////////////
 
-            LatLng ll1 = new LatLng(41.9, 12.5);
+            LatLng ll1 = new LatLng(41.942574, 12.473963);
             marker1 = googleMap.addMarker(new MarkerOptions()
                     .position(ll1)
                     .snippet("Buca")
@@ -135,28 +146,28 @@ public class HomeFragment extends Fragment {
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
             );
 
-            LatLng ll4 = new LatLng(41.90, 12.55);
+            LatLng ll4 = new LatLng(41.898038, 12.562988);
             marker4 = googleMap.addMarker(new MarkerOptions()
                     .position(ll4)
                     .snippet("Vegetazione")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
             );
 
-            LatLng ll5 = new LatLng(41.75, 12.40);
+            LatLng ll5 = new LatLng(41.949815, 12.455857);
             marker5 = googleMap.addMarker(new MarkerOptions()
                     .position(ll5)
                     .snippet("Fauna")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
             );
 
-            LatLng ll6 = new LatLng(41.78, 12.45);
+            LatLng ll6 = new LatLng(41.901405, 12.500068);
             marker5 = googleMap.addMarker(new MarkerOptions()
                     .position(ll6)
                     .snippet("Guasto")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
             );
 
-            LatLng ll7 = new LatLng(41.71, 12.39);
+            LatLng ll7 = new LatLng(41.848584, 12.486243);
             marker5 = googleMap.addMarker(new MarkerOptions()
                     .position(ll7)
                     .snippet("Immondizia")
@@ -179,14 +190,14 @@ public class HomeFragment extends Fragment {
                 caricamentoDaMarker = false;
                 LatLng caricamentoLL;
                 switch (caricamentoDaMarkerCategoria) {
-                    case "Buca": caricamentoLL = new LatLng(41.9, 12.5); break;
+                    case "Buca": caricamentoLL = new LatLng(41.942574, 12.473963); break;
                     case "Segnaletica": caricamentoLL = new LatLng(41.88, 12.42); break;
                     case "Altro problema stradale": caricamentoLL = new LatLng(41.81, 12.54); break;
-                    case "Vegetazione": caricamentoLL = new LatLng(41.90, 12.55); break;
-                    case "Fauna": caricamentoLL = new LatLng(41.75, 12.40); break;
-                    case "Guasto": caricamentoLL = new LatLng(41.78, 12.45); break;
-                    case "Immondizia": caricamentoLL = new LatLng(41.71, 12.39); break;
-                    case "Altro": caricamentoLL = new LatLng(42.006310, 12.357117); break;
+                    case "Vegetazione": caricamentoLL = new LatLng(41.898038, 12.562988); break;
+                    case "Fauna": caricamentoLL = new LatLng(41.949815, 12.455857); break;
+                    case "Guasto": caricamentoLL = new LatLng(41.901405, 12.500068); break;
+                    case "Immondizia": caricamentoLL = new LatLng(41.848584, 12.486243); break;
+                    case "Altro": caricamentoLL = new LatLng(42.006310, 12.357117); break;  //piansaccoccia
                     default: caricamentoLL = new LatLng(42.006310, 12.357117); break;
                 }
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(caricamentoLL, 17));

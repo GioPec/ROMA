@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Dictionary;
 import java.util.Enumeration;
@@ -57,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     public static ImageView imageView3;
 
     public static Window theWindow;
+
+    public static boolean primaVolta = true;
 
     public static Map<String, Integer> colorsDictionary = new HashMap<String, Integer>();
     public static Map<String, Float> colorsMarkersDictionary = new HashMap<String, Float>();
@@ -192,7 +198,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickShowMyProfile(View view) {
+        Intent intent = new Intent(this, ExternalProfileActivity.class);
+        startActivity(intent);
+    }
+
     public void AnnullaPopup(View view) {
+        HomeFragment.selectedImageUri = null;
         popupNewReport.setVisibility(View.INVISIBLE);
         HomeFragment.rimuoviMarkerPopup();
     }

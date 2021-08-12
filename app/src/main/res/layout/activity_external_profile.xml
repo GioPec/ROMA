@@ -60,9 +60,11 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="380dp"
-        android:layout_height="421dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="384dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/popupDescription">
@@ -163,10 +165,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Segnaletica"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Segnaletica"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -223,6 +225,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:layout_marginTop="8dp"
+                                android:onClick="onClickShowProfile"
                                 android:text="Gabriele"
                                 android:textColor="#000000"
                                 android:textSize="20dp"
@@ -284,36 +287,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             <!-- app:cardBackgroundColor="#3B339300"-->
@@ -407,10 +380,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Altro problema stradale"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Altro problema stradale"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -541,35 +514,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview3"
                 style="@style/Base.CardView"
@@ -660,10 +604,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Guasto"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Guasto"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -793,34 +737,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview4"
                 style="@style/Base.CardView"
@@ -911,10 +827,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Fauna"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Fauna"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -1045,37 +961,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview5"
                 style="@style/Base.CardView"
@@ -1166,10 +1051,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Immondizia"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Immondizia"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

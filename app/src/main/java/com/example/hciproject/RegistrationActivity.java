@@ -29,27 +29,12 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        init();
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE) profileImage = data.getData();
-
-        imageView3.setImageURI(profileImage);
-    }
-
-    private void init() {
         UserEmail = findViewById(R.id.UserEmail);
         UserName = findViewById(R.id.UserName);
         UserPassword = findViewById(R.id.UserPassword);
         RegistrationImageButton = findViewById(R.id.RegistrationImageButton);
         imageView3 = findViewById(R.id.imageView3);
-
-        USER_EMAIL = UserEmail.getText().toString();
-        USER_NAME = UserName.getText().toString();
-        USER_PASSWORD = UserPassword.getText().toString();
 
         ///////////////////// Immagine profilo /////////////////////
 
@@ -66,17 +51,19 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE) profileImage = data.getData();
+
+        imageView3.setImageURI(profileImage);
+    }
+
     public void onRegistrationSubmit(View view) {
 
-        if(false) return;   //TODO: validation o controllo dati
-        Snackbar.make(view, "Confermi i dati scelti?", Snackbar.LENGTH_LONG)
-                .setAction("Ok", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                }).show();
-
+        USER_EMAIL = UserEmail.getText().toString();
+        USER_NAME = UserName.getText().toString();
+        USER_PASSWORD = UserPassword.getText().toString();
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
