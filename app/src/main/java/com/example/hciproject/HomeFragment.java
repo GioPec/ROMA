@@ -14,8 +14,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +33,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
@@ -38,9 +45,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.stream.IntStream;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -57,6 +73,7 @@ public class HomeFragment extends Fragment {
     public static Uri selectedImageUri = null;
 
     public static final int PICK_IMAGE = 1;
+    public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 2;
 
     public static boolean caricamentoDaMarker = false;
     public static String caricamentoDaMarkerCategoria;
@@ -70,7 +87,8 @@ public class HomeFragment extends Fragment {
             Snackbar.make(getActivity().findViewById(android.R.id.content), "Per aggiungere una nuova segnalazione, tieni premuto sulla mappa", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Chiudi", new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {}
+                        public void onClick(View v) {
+                        }
                     }).show();
         }
 
@@ -82,6 +100,21 @@ public class HomeFragment extends Fragment {
         if (requestCode == PICK_IMAGE) selectedImageUri = data.getData();
 
         MainActivity.imageView3.setImageURI(selectedImageUri);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                //googleMap.setMyLocationEnabled(true);
+                //googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+            }
+        }
     }
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -99,9 +132,34 @@ public class HomeFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
 
-            //googleMap.setMyLocationEnabled(true);
-            //googleMap.getUiSettings().setMyLocationButtonEnabled(true);
             // TODO per la user position: https://developers.google.com/maps/documentation/android-sdk/current-place-tutorial
+
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                return;
+            }
+
+            FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+            Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
+            googleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+                @Override
+                public boolean onMyLocationButtonClick() {
+                    if (locationResult.isSuccessful() && locationResult.getResult() != null) {
+                        LatLng pos = new LatLng(locationResult.getResult().getLatitude(), locationResult.getResult().getLongitude());
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pos, 20));
+                        return true;
+                    }
+                    return false;
+                }
+            });
+
+            googleMap.setMyLocationEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
             googleMap.getUiSettings().setMapToolbarEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true); //false
             googleMap.setMinZoomPreference(11);
@@ -219,35 +277,60 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onMapLongClick(LatLng latLng) {
 
-                    popupLatLngMarker = latLng;
+                    Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                    List<Address> addresses = null;
+                    try {
+                        addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+                    } catch (IOException e) {e.printStackTrace();}
+                    Address obj = addresses.get(0);
+                    String add = obj.getAddressLine(0);
+                    add = add + "\n" + obj.getCountryName();
+                    add = add + "\n" + obj.getCountryCode();
+                    add = add + "\n" + obj.getAdminArea();
+                    add = add + "\n" + obj.getPostalCode();
+                    add = add + "\n" + obj.getSubAdminArea();
+                    add = add + "\n" + obj.getLocality();
+                    add = add + "\n" + obj.getSubThoroughfare();
+                    Log.v("IGA", "Address\n" + add);
 
-                    // Animating to the touched position
-                    //googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                    int pc;
+                    if (obj.getPostalCode()!=null) pc = Integer.parseInt(obj.getPostalCode());
+                    else pc=0;
+                    int[] valid_pc = IntStream.rangeClosed(118, 199).toArray();
 
-                    MainActivity.popupNewReport.setVisibility(View.VISIBLE);
+                    if(!IntStream.of(valid_pc).anyMatch(x -> x == pc)) {
+                        Snackbar.make(getView(), "Purtroppo questa zona si trova fuori dal comune di Roma", Snackbar.LENGTH_LONG)
+                                .setAction("Capito", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {}
+                                }).show();
+                    }
+                    else {
+                        popupLatLngMarker = latLng;
 
+                        newMarker = googleMap.addMarker(new MarkerOptions()
+                                .position(popupLatLngMarker)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                        );
 
-                    // Create an ArrayAdapter using the string array and a default spinner layout
-                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                        R.array.spinnerCategories, android.R.layout.simple_spinner_item);
-                    // Specify the layout to use when the list of choices appears
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    // Apply the adapter to the spinner
-                    MainActivity.popupCategoria.setAdapter(adapter);
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
 
-                    /*
-                    newMarker = googleMap.addMarker(new MarkerOptions()
-                            .position(popupLatLngMarker)
-                            .title(popupTitolo)
-                            .snippet(popupCategoria)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
-                    );
-                    */
-                    newMarker = googleMap.addMarker(new MarkerOptions()
-                            .position(popupLatLngMarker)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
-                    );
+                        final Handler handler = new Handler(Looper.getMainLooper());
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                MainActivity.popupNewReport.setVisibility(View.VISIBLE);
+                            }
+                        }, 2000);
+
+                        // Create an ArrayAdapter using the string array and a default spinner layout
+                        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                                R.array.spinnerCategories, android.R.layout.simple_spinner_item);
+                        // Specify the layout to use when the list of choices appears
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        // Apply the adapter to the spinner
+                        MainActivity.popupCategoria.setAdapter(adapter);
+                    }
                 }
             });
 
@@ -257,28 +340,46 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    popupTitolo = MainActivity.popupTitolo.getText().toString();
-                    popupCategoria = MainActivity.popupCategoria.getSelectedItem().toString();
-                    popupDescrizione = MainActivity.popupDescrizione.getText().toString();
-                    popupUrgente = MainActivity.popupUrgente.isChecked();
+                    if (selectedImageUri!=null) {
 
-                    newMarker.setTitle(HomeFragment.popupTitolo);
-                    newMarker.setSnippet(HomeFragment.popupCategoria);
-                    newMarker.setTag(selectedImageUri);
+                        popupTitolo = MainActivity.popupTitolo.getText().toString();
+                        popupCategoria = MainActivity.popupCategoria.getSelectedItem().toString();
+                        popupDescrizione = MainActivity.popupDescrizione.getText().toString();
+                        popupUrgente = MainActivity.popupUrgente.isChecked();
 
-                    newMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MainActivity.colorsMarkersDictionary.get(popupCategoria))); //cambio colore marker
+                        newMarker.setTitle(HomeFragment.popupTitolo);
+                        newMarker.setSnippet(HomeFragment.popupCategoria);
+                        newMarker.setTag(selectedImageUri);
 
-                    MainActivity.imageView3.setImageURI(null);
+                        newMarker.setIcon(BitmapDescriptorFactory.defaultMarker(MainActivity.colorsMarkersDictionary.get(popupCategoria))); //cambio colore marker
 
-                    MainActivity.popupNewReport.setVisibility(View.INVISIBLE);
+                        MainActivity.imageView3.setImageURI(null);
+                        MainActivity.popupTitolo.setText("");
+                        MainActivity.popupDescrizione.setText("");
+                        MainActivity.popupUrgente.setChecked(false);
 
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(popupLatLngMarker, 12));
+                        MainActivity.popupNewReport.setVisibility(View.INVISIBLE);
 
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(popupLatLngMarker, 12));
 
-                    //InputMethodManager imm = (InputMethodManager) getSystemService(getContext()); //TODO
-                    //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                        Snackbar.make(view, "Segnalazione inviata!", Snackbar.LENGTH_LONG)
+                                .setAction("Ok", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {}
+                                }).show();
 
-                    //MainActivity.theWindow.setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN );
+                        //InputMethodManager imm = (InputMethodManager) getSystemService(getContext()); //TODO
+                        //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+                        //MainActivity.theWindow.setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN );
+                    }
+                    else {
+                        Snackbar.make(view, "Aggiungi un'immagine!", Snackbar.LENGTH_LONG)
+                                .setAction("Ok", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {}
+                                }).show();
+                    }
 
                 }
             });

@@ -5,8 +5,8 @@
         <item>Segnaletica</item>    <!-- yellow -->
         <item>Altro problema stradale</item>    <!-- violet -->
         <item>Vegetazione</item>    <!-- green -->
-        <item>Fauna</item>    <!-- 15.0f - brown-->
-        <item>Guasto</item>    <!-- orange -->
+        <item>Fauna</item>    <!-- orange-->
+        <item>Guasto</item>    <!-- red -->
         <item>Immondizia</item>    <!-- 305.0f - purple-->
         <item>Altro</item>    <!-- 175.0f - cyan-->
     </string-array>

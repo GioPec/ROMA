@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         colorsMarkersDictionary.put("Segnaletica", BitmapDescriptorFactory.HUE_YELLOW);
         colorsMarkersDictionary.put("Altro problema stradale", BitmapDescriptorFactory.HUE_VIOLET);
         colorsMarkersDictionary.put("Vegetazione", BitmapDescriptorFactory.HUE_GREEN);
-        colorsMarkersDictionary.put("Fauna", 15.0f);
+        colorsMarkersDictionary.put("Fauna", BitmapDescriptorFactory.HUE_ORANGE);
         colorsMarkersDictionary.put("Guasto", BitmapDescriptorFactory.HUE_RED);
         colorsMarkersDictionary.put("Immondizia", 305.0f);
         colorsMarkersDictionary.put("Altro", 175.0f);
