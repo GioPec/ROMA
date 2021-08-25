@@ -112,8 +112,6 @@ public class HomeFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
 
-            // TODO per la user position: https://developers.google.com/maps/documentation/android-sdk/current-place-tutorial
-
             if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -236,7 +234,7 @@ public class HomeFragment extends Fragment {
                     case "Guasto": caricamentoLL = new LatLng(41.901405, 12.500068); break;
                     case "Immondizia": caricamentoLL = new LatLng(41.848584, 12.486243); break;
                     case "Altro": caricamentoLL = new LatLng(42.006310, 12.357117); break;  //piansaccoccia
-                    default: caricamentoLL = new LatLng(42.006310, 12.357117); break;
+                    default: caricamentoLL = newMarker.getPosition(); break;
                 }
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(caricamentoLL, 17));
             }
@@ -299,6 +297,7 @@ public class HomeFragment extends Fragment {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                MainActivity.reportPopupCard.setVisibility(View.INVISIBLE);
                                 MainActivity.popupNewReport.setVisibility(View.VISIBLE);
                             }
                         }, 2000);

@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment {
             categoriaHidden.setText(HomeFragment.popupCategoria);
             titoloHidden.setText(HomeFragment.popupTitolo);
             immagineHidden.setImageURI(HomeFragment.selectedImageUri);
-            markerButtonHidden.setTag(HomeFragment.popupCategoria);
+            markerButtonHidden.setTag("default");
             if (HomeFragment.popupUrgente) urgenteHidden.setVisibility(View.VISIBLE);
 
             cardHidden = view.findViewById(R.id.base_cardview_hidden_1);

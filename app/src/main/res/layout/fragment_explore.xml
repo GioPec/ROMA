@@ -23,8 +23,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="382dp"
-        android:layout_height="535dp"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
@@ -1594,6 +1594,21 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
+
+
+
+            <Button
+                android:id="@+id/placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:text="Modifica"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.228"
+                app:layout_constraintStart_toEndOf="@+id/profileUsername"
+                app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
 
         </LinearLayout>
     </ScrollView>

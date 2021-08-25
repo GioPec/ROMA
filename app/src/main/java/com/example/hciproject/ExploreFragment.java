@@ -24,8 +24,6 @@ public class ExploreFragment extends Fragment {
         MaterialTextView usernameEditText2 = view.findViewById(R.id.nomeUtente2);
         usernameEditText2.setText(LoginActivity.UTENTE);
 
-        //TODO
-
         return inflater.inflate(R.layout.fragment_explore, container, false);
     }
 }
