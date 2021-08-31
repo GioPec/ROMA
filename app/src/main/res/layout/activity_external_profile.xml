@@ -9,12 +9,12 @@
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="94dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/gabriele"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,12 +22,12 @@
         android:id="@+id/profileUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="92dp"
         android:text="Gabriele"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.669"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -366,8 +366,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="60dp"
-                            android:text="Risolto"
-                            android:textColor="#358838"
+                            android:text="Preso in carico"
+                            android:textColor="#ED7014"
                             android:textSize="20dp"
                             android:textStyle="normal|italic"
                             app:layout_constraintStart_toEndOf="@+id/icon2"
@@ -1189,7 +1189,7 @@
             <Button
                 android:id="@+id/placeholder"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="36dp"
                 android:layout_marginTop="8dp"
                 android:text="Modifica"
                 android:visibility="invisible"
@@ -1201,5 +1201,16 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="goBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

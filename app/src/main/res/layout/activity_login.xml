@@ -8,22 +8,33 @@
 
     <EditText
         android:id="@+id/UserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <Button
         android:id="@+id/LoginButton"
-        android:layout_width="101dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="127dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:onClick="onLoginSubmit"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="127dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
         android:onClick="onLoginSubmit"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,23 +45,35 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="264dp"
         android:text="Sei nuovo? Registrati"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
+    <Button
+        android:id="@+id/RegistrationButton"
+        android:layout_width="164dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onRegistrationClick"
+        android:text="Registrati"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
     <EditText
         android:id="@+id/UserPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UserName" />
 
@@ -58,22 +81,11 @@
         android:id="@+id/Logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/RegistrationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:onClick="onRegistrationClick"
-        android:text="Registrati"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

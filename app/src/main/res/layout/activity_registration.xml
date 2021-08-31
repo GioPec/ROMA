@@ -8,9 +8,9 @@
 
     <EditText
         android:id="@+id/UserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -20,9 +20,9 @@
 
     <EditText
         android:id="@+id/UserPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
@@ -38,14 +38,15 @@
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <Button
         android:id="@+id/RegistrationImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:onClick="onRegistrationSubmit"
         android:text="Scegli foto"
@@ -56,9 +57,9 @@
 
     <Button
         android:id="@+id/RegistrationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="163dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:onClick="onRegistrationSubmit"
         android:text="Registrati"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,8 +68,8 @@
 
     <EditText
         android:id="@+id/UserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Email"
@@ -79,10 +80,11 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegistrationImageButton" />
 
