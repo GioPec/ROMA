@@ -41,28 +41,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
-        android:text="Sei nuovo? Registrati"
+    <Button
+        android:id="@+id/loginButton2"
+        android:layout_width="127dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="108dp"
+        android:onClick="onLoginSubmit"
+        android:text="Accedi con Google"
+        android:backgroundTint="#FF3E30"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Logo" />
+        app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
+
+    <!-- TODO funzione accesso facebook google-->
+
+    <Button
+        android:id="@+id/loginButton3"
+        android:layout_width="157dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="108dp"
+        android:onClick="onLoginSubmit"
+        android:text="Continua con Facebook"
+        android:backgroundTint="#4267B2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
 
     <Button
         android:id="@+id/RegistrationButton"
         android:layout_width="164dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:onClick="onRegistrationClick"
         android:text="Registrati"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="360dp"
+        android:text="Sei nuovo? Registrati"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <EditText
         android:id="@+id/UserPassword"
