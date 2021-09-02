@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     public static com.google.android.material.card.MaterialCardView reportPopupCard;
     public static TextView titoloReportPopup;
     public static TextView categoriaReportPopup;
-    public static TextView descrizioneReportPopup;
+    //public static TextView descrizioneReportPopup;
+    public static TextView usernameReportPopup;
     public static ImageView fotoReportPopup;
     public static com.google.android.material.card.MaterialCardView popupNewReport;
 
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     public static ImageView imageView3;
 
     public static Window theWindow;
+
+    //public static menu nomeUtenteBottomMenu;
 
     public static boolean primaVolta = true;
 
@@ -88,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
         reportPopupCard = findViewById(R.id.ReportPopupCard);
         titoloReportPopup = findViewById(R.id.popupTitle);
         categoriaReportPopup = findViewById(R.id.popupCategory);
-        descrizioneReportPopup = findViewById(R.id.popupDescription);
+        //descrizioneReportPopup = findViewById(R.id.popupDescription);
+        usernameReportPopup = findViewById(R.id.popupUsername);
         fotoReportPopup = findViewById(R.id.imageView1);
         popupNewReport = findViewById(R.id.popupNewReport);
 
@@ -103,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottoneConferma = findViewById(R.id.button3);
         buttonImage = findViewById(R.id.buttonImage);
+
+        //nomeUtenteBottomMenu = findViewById(R.id.profile);
+        //nomeUtenteBottomMenu.setText(LoginActivity.UTENTE);
 
         //Keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
@@ -177,8 +184,11 @@ public class MainActivity extends AppCompatActivity {
     public void mostraTuttoOnClick(View view) {
         //AlphaAnimation buttonClick = new AlphaAnimation(0.2f, 1.0f);
         //view.startAnimation(buttonClick);
-        Intent intent = new Intent(this, ExternalProfileActivity.class);
-        startActivity(intent);
+        TextView popupU = view.findViewById(R.id.popupUsername);
+        //TODO FIX
+        if (true) { Intent intent = new Intent(this, ExternalProfileActivity.class); startActivity(intent); }   //popupU.getText().toString().equals("Gabriele")
+        //else getFragmentManager().beginTransaction().replace(R.id.flFragment, new ProfileFragment()).addToBackStack(null).commit();
+
     }
 
     public void onClickShowProfile(View view) {
@@ -223,5 +233,19 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment.caricamentoDaMarker = true;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void editUsername(View view) {
+        if (!ProfileFragment.usernameEditText222.isEnabled()) {
+            ProfileFragment.usernameEditText222.setEnabled(true);
+            ProfileFragment.editButton.setImageResource(R.drawable.ok);
+        } else {
+            ProfileFragment.usernameEditText222.setEnabled(false);
+            ProfileFragment.editButton.setImageResource(R.drawable.edit);
+            ProfileFragment.nome1.setText(ProfileFragment.usernameEditText222.getText().toString());
+            ProfileFragment.nome2.setText(ProfileFragment.usernameEditText222.getText().toString());
+            ProfileFragment.nome3.setText(ProfileFragment.usernameEditText222.getText().toString());
+            LoginActivity.UTENTE = ProfileFragment.usernameEditText222.getText().toString();
+        }
     }
 }

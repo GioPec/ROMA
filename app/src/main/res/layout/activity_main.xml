@@ -75,13 +75,26 @@
                     app:layout_constraintVertical_bias="0.296" />
 
                 <TextView
+                    android:id="@+id/popupUsername"
+                    android:layout_width="226dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Gabriele"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
                     android:id="@+id/popupCategory"
                     android:layout_width="226dp"
                     android:layout_height="22dp"
                     android:layout_marginStart="140dp"
-                    android:layout_marginTop="8dp"
-                    android:onClick="onClickShowProfile"
-                    android:text="Titolo"
+                    android:layout_marginTop="56dp"
+                    android:text="Categoria"
                     android:textSize="16sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -92,10 +105,10 @@
                 <TextView
                     android:id="@+id/popupTitle"
                     android:layout_width="226dp"
-                    android:layout_height="45dp"
+                    android:layout_height="57dp"
                     android:layout_marginStart="140dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Categoria"
+                    android:layout_marginTop="90dp"
+                    android:text="Titolo"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -103,17 +116,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
-                    android:id="@+id/popupDescription"
-                    android:layout_width="226dp"
-                    android:layout_height="83dp"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginTop="80dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ante ipsum,mus ac, sollicitudin eget leo. Orci varius."
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+
 
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -124,7 +127,7 @@
             android:layout_width="375dp"
             android:layout_height="590dp"
             android:translationZ="1dp"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:cardCornerRadius="16dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
