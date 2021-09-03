@@ -10,9 +10,11 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class RegistrationActivity extends AppCompatActivity {
 
-    public EditText UserEmail, UserName, UserPassword;
+    public EditText UserEmail, UserName, UserPassword, UserPassword2;
     public static Button RegistrationImageButton;
 
     public static final int PICK_IMAGE = 2;
@@ -22,6 +24,7 @@ public class RegistrationActivity extends AppCompatActivity {
     public static String USER_EMAIL;
     public static String USER_NAME;
     public static String USER_PASSWORD;
+    public static String USER_PASSWORD2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class RegistrationActivity extends AppCompatActivity {
         UserEmail = findViewById(R.id.UserEmail);
         UserName = findViewById(R.id.UserName);
         UserPassword = findViewById(R.id.UserPassword);
+        UserPassword2 = findViewById(R.id.UserPassword2);
         RegistrationImageButton = findViewById(R.id.RegistrationImageButton);
         imageView3 = findViewById(R.id.imageView3);
 
@@ -59,11 +63,20 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void onRegistrationSubmit(View view) {
 
+        USER_PASSWORD = UserPassword.getText().toString();
+        USER_PASSWORD2 = UserPassword2.getText().toString();
         USER_EMAIL = UserEmail.getText().toString();
         USER_NAME = UserName.getText().toString();
-        USER_PASSWORD = UserPassword.getText().toString();
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        if (USER_PASSWORD.equals(USER_PASSWORD2)) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Snackbar.make(view, "Le password non corrispondono!", Snackbar.LENGTH_SHORT)
+                    .setAction("Chiudi", v -> {
+
+                    }).show();
+        }
     }
 }

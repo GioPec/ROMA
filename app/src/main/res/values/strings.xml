@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">R.O.M.A.</string>
     <string name="title_activity_maps">Map</string>
+    <string name="PD"><u>Password dimenticata?</u></string>
+    <string name="desc">
+        R.O.M.A. è un\'app sviluppata per le persone che vivono nel Comune di Roma.\n\n
+        L\'idea di base dell\'app è quella di permetterti di segnalare gli episodi di disagio urbano che si incontrano nella vita di tutti i giorni.\n\n
+        Questi problemi possono essere di qualsiasi natura, dai guasti alle infrastrutture alle buche nelle strade, e molti altri.\n\n
+        Scatta una foto del problema, apri questa app e segnalacelo! Il problema verrà inoltrato al comune di Roma entro breve. Se ci segnali il problema come urgente, faremo ancora più in fretta.\n\n
+    </string>
+
 </resources>
