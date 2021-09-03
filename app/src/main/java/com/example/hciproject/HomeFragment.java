@@ -258,19 +258,21 @@ public class HomeFragment extends Fragment {
 
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                     List<Address> addresses = null;
+                    Address obj = null;
+                    String add = "";
                     try {
                         addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+                        obj = addresses.get(0);
+                        add = obj.getAddressLine(0);
+                        add = add + "\n" + obj.getCountryName();
+                        add = add + "\n" + obj.getCountryCode();
+                        add = add + "\n" + obj.getAdminArea();
+                        add = add + "\n" + obj.getPostalCode();
+                        add = add + "\n" + obj.getSubAdminArea();
+                        add = add + "\n" + obj.getLocality();
+                        add = add + "\n" + obj.getSubThoroughfare();
+                        Log.v("IGA", "Address\n" + add);
                     } catch (IOException e) {e.printStackTrace();}
-                    Address obj = addresses.get(0);
-                    String add = obj.getAddressLine(0);
-                    add = add + "\n" + obj.getCountryName();
-                    add = add + "\n" + obj.getCountryCode();
-                    add = add + "\n" + obj.getAdminArea();
-                    add = add + "\n" + obj.getPostalCode();
-                    add = add + "\n" + obj.getSubAdminArea();
-                    add = add + "\n" + obj.getLocality();
-                    add = add + "\n" + obj.getSubThoroughfare();
-                    Log.v("IGA", "Address\n" + add);
 
                     int pc;
                     if (obj.getPostalCode()!=null) pc = Integer.parseInt(obj.getPostalCode());
@@ -395,6 +397,7 @@ public class HomeFragment extends Fragment {
                         MainActivity.titoloReportPopup.setText(popupTitolo);
                         MainActivity.categoriaReportPopup.setText(popupCategoria);
                         //MainActivity.descrizioneReportPopup.setText(popupDescrizione);
+                        MainActivity.usernameReportPopup.setText(LoginActivity.UTENTE);
                         MainActivity.immaginePopup.setImageURI(selectedImageUri);
                         MainActivity.reportPopupCard.setStrokeColor(MainActivity.colorsDictionary.get(popupCategoria));
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
