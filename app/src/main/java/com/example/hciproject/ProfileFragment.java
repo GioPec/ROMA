@@ -6,6 +6,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,6 +33,12 @@ public class ProfileFragment extends Fragment {
     public static ImageView imageView_hidden_1;
     public static ImageView imageView;
     public static ImageView imageView2;
+    public static ImageButton editButton;
+    public static EditText usernameEditText222;
+
+    public static TextView nome1;
+    public static TextView nome2;
+    public static TextView nome3;
 
     @Nullable
     @Override
@@ -41,6 +48,8 @@ public class ProfileFragment extends Fragment {
 
         MaterialTextView usernameEditText = view.findViewById(R.id.profileUsername);
         usernameEditText.setText(LoginActivity.UTENTE);
+        usernameEditText222 = view.findViewById(R.id.UserName);
+        usernameEditText222.setHint(LoginActivity.UTENTE);
         MaterialTextView usernameEditText2 = view.findViewById(R.id.textView);
         usernameEditText2.setText(LoginActivity.UTENTE);
         MaterialTextView usernameEditText3 = view.findViewById(R.id.textView2);
@@ -57,6 +66,12 @@ public class ProfileFragment extends Fragment {
         imageView_hidden_1.setImageURI(RegistrationActivity.profileImage);
         imageView.setImageURI(RegistrationActivity.profileImage);
         imageView2.setImageURI(RegistrationActivity.profileImage);
+
+        editButton = view.findViewById(R.id.editButton);
+
+        nome1 = view.findViewById(R.id.textView_hidden_1);
+        nome2 = view.findViewById(R.id.textView);
+        nome3 = view.findViewById(R.id.textView2);
 
         /////////////////////////////////////////////////////////////
 
@@ -188,6 +203,7 @@ public class ProfileFragment extends Fragment {
         /////////////////////////////////////////////////
 
         return view;
+        //return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     //@Override

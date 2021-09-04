@@ -49,6 +49,7 @@ public class HomeFragment extends Fragment {
     public static String popupTitolo;
     public static String popupCategoria;
     public static String popupDescrizione;
+    public static String popupUsername;
     public static boolean popupUrgente;
     public static Uri selectedImageUri = null;
 
@@ -257,19 +258,21 @@ public class HomeFragment extends Fragment {
 
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                     List<Address> addresses = null;
+                    Address obj = null;
+                    String add = "";
                     try {
                         addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+                        obj = addresses.get(0);
+                        add = obj.getAddressLine(0);
+                        add = add + "\n" + obj.getCountryName();
+                        add = add + "\n" + obj.getCountryCode();
+                        add = add + "\n" + obj.getAdminArea();
+                        add = add + "\n" + obj.getPostalCode();
+                        add = add + "\n" + obj.getSubAdminArea();
+                        add = add + "\n" + obj.getLocality();
+                        add = add + "\n" + obj.getSubThoroughfare();
+                        Log.v("IGA", "Address\n" + add);
                     } catch (IOException e) {e.printStackTrace();}
-                    Address obj = addresses.get(0);
-                    String add = obj.getAddressLine(0);
-                    add = add + "\n" + obj.getCountryName();
-                    add = add + "\n" + obj.getCountryCode();
-                    add = add + "\n" + obj.getAdminArea();
-                    add = add + "\n" + obj.getPostalCode();
-                    add = add + "\n" + obj.getSubAdminArea();
-                    add = add + "\n" + obj.getLocality();
-                    add = add + "\n" + obj.getSubThoroughfare();
-                    Log.v("IGA", "Address\n" + add);
 
                     int pc;
                     if (obj.getPostalCode()!=null) pc = Integer.parseInt(obj.getPostalCode());
@@ -323,7 +326,8 @@ public class HomeFragment extends Fragment {
 
                         popupTitolo = MainActivity.popupTitolo.getText().toString();
                         popupCategoria = MainActivity.popupCategoria.getSelectedItem().toString();
-                        popupDescrizione = MainActivity.popupDescrizione.getText().toString();
+                        //popupDescrizione = MainActivity.popupDescrizione.getText().toString();
+                        popupUsername = LoginActivity.UTENTE;
                         popupUrgente = MainActivity.popupUrgente.isChecked();
 
                         newMarker.setTitle(HomeFragment.popupTitolo);
@@ -392,7 +396,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText(popupTitolo);
                         MainActivity.categoriaReportPopup.setText(popupCategoria);
-                        MainActivity.descrizioneReportPopup.setText(popupDescrizione);
+                        //MainActivity.descrizioneReportPopup.setText(popupDescrizione);
+                        MainActivity.usernameReportPopup.setText(LoginActivity.UTENTE);
                         MainActivity.immaginePopup.setImageURI(selectedImageUri);
                         MainActivity.reportPopupCard.setStrokeColor(MainActivity.colorsDictionary.get(popupCategoria));
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -401,7 +406,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Attenzione! Buca profonda al lato della strada!");
                         MainActivity.categoriaReportPopup.setText("Buca");
-                        MainActivity.descrizioneReportPopup.setText("Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto...");
+                        //MainActivity.descrizioneReportPopup.setText("Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto...");
+                        MainActivity.usernameReportPopup.setText(LoginActivity.UTENTE);
                         MainActivity.reportPopupCard.setStrokeColor(0xFF0000FF);    //blue
                         MainActivity.immaginePopup.setImageResource(R.drawable.buca);
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -410,7 +416,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Mi è arrivata la multa, ma il cartello non si vedeva...");
                         MainActivity.categoriaReportPopup.setText("Segnaletica");
-                        MainActivity.descrizioneReportPopup.setText("In questo tratto di strada il sorpasso è proibito. Peccato che non è segnalato, o meglio, il cartello che dovrebbe avvisare di ciò è stato...");
+                        //MainActivity.descrizioneReportPopup.setText("In questo tratto di strada il sorpasso è proibito. Peccato che non è segnalato, o meglio, il cartello che dovrebbe avvisare di ciò è stato...");
+                        MainActivity.usernameReportPopup.setText("Gabriele");
                         MainActivity.reportPopupCard.setStrokeColor(0xFFFFFF00);    //yellow
                         MainActivity.immaginePopup.setImageResource(R.drawable.segnaletica);
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -419,7 +426,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Sono dieci mesi che non funziona! Fate qualcosa!");
                         MainActivity.categoriaReportPopup.setText("Altro problema stradale");
-                        MainActivity.descrizioneReportPopup.setText("È passato quasi un anno e ancora nessuna traccia di intervento da parte del comune. Tutte le sere tornando a casa ho paura...");
+                        //MainActivity.descrizioneReportPopup.setText("È passato quasi un anno e ancora nessuna traccia di intervento da parte del comune. Tutte le sere tornando a casa ho paura...");
+                        MainActivity.usernameReportPopup.setText("Gabriele");
                         MainActivity.reportPopupCard.setStrokeColor(0xFF800080);    //violet
                         MainActivity.immaginePopup.setImageResource(R.drawable.altroproblemastradale);
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -428,7 +436,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Mia nonna non riesce più a percorrerlo");
                         MainActivity.categoriaReportPopup.setText("Vegetazione");
-                        MainActivity.descrizioneReportPopup.setText("Come da titolo, faccio questa segnalazione per portare alla vostra attenzione un problema urgente di degrado urbano...");
+                        //MainActivity.descrizioneReportPopup.setText("Come da titolo, faccio questa segnalazione per portare alla vostra attenzione un problema urgente di degrado urbano...");
+                        MainActivity.usernameReportPopup.setText(LoginActivity.UTENTE);
                         MainActivity.reportPopupCard.setStrokeColor(0xFF00FF00);    //green
                         MainActivity.immaginePopup.setImageResource(R.drawable.vegetazione);
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -437,7 +446,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Fate attenzione, avvistati cinghiali in zona!!");
                         MainActivity.categoriaReportPopup.setText("Fauna");
-                        MainActivity.descrizioneReportPopup.setText("In 40 anni non ho mai visto una roba del genere, ormai non hanno manco più paura delle macchine! O li catturate o me li mangio...");
+                        //MainActivity.descrizioneReportPopup.setText("In 40 anni non ho mai visto una roba del genere, ormai non hanno manco più paura delle macchine! O li catturate o me li mangio...");
+                        MainActivity.usernameReportPopup.setText("Gabriele");
                         MainActivity.immaginePopup.setImageResource(R.drawable.fauna);
                         MainActivity.reportPopupCard.setStrokeColor(0xFFFC6A03);    //orange
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -446,7 +456,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Mettetele in funzione una volta per tutte!");
                         MainActivity.categoriaReportPopup.setText("Guasto");
-                        MainActivity.descrizioneReportPopup.setText("Non le ho mai viste in funzione, mi tocca sempre prendere le scale a piedi. È un disagio per me e per molti altri pendolari...");
+                        //MainActivity.descrizioneReportPopup.setText("Non le ho mai viste in funzione, mi tocca sempre prendere le scale a piedi. È un disagio per me e per molti altri pendolari...");
+                        MainActivity.usernameReportPopup.setText("Gabriele");
                         MainActivity.immaginePopup.setImageResource(R.drawable.guasto);
                         MainActivity.reportPopupCard.setStrokeColor(0xFFD0312D);    //red
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
@@ -455,7 +466,8 @@ public class HomeFragment extends Fragment {
                     {
                         MainActivity.titoloReportPopup.setText("Vergogna!!!");
                         MainActivity.categoriaReportPopup.setText("Immondizia");
-                        MainActivity.descrizioneReportPopup.setText("Devo fare lo slalom per uscire di casa!!");
+                        //MainActivity.descrizioneReportPopup.setText("Devo fare lo slalom per uscire di casa!!");
+                        MainActivity.usernameReportPopup.setText("Gabriele");
                         MainActivity.immaginePopup.setImageResource(R.drawable.immondizia);
                         MainActivity.reportPopupCard.setStrokeColor(0xFFFF1CAE);    //purple
                         MainActivity.reportPopupCard.setVisibility(newVisibility);
