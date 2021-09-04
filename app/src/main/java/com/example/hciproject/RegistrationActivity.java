@@ -3,6 +3,8 @@ package com.example.hciproject;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,15 +70,22 @@ public class RegistrationActivity extends AppCompatActivity {
         USER_EMAIL = UserEmail.getText().toString();
         USER_NAME = UserName.getText().toString();
 
-        if (USER_PASSWORD.equals(USER_PASSWORD2)) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
-        else {
+        if (!USER_PASSWORD.equals(USER_PASSWORD2)) {
+
             Snackbar.make(view, "Le password non corrispondono!", Snackbar.LENGTH_SHORT)
                     .setAction("Chiudi", v -> {
 
                     }).show();
+        }
+        else if (!TextUtils.isEmpty(USER_EMAIL) && !Patterns.EMAIL_ADDRESS.matcher(USER_EMAIL).matches()){
+            Snackbar.make(view, "Inserisci una email valida!", Snackbar.LENGTH_SHORT)
+                    .setAction("Chiudi", v -> {
+
+                    }).show();
+        }
+        else {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         }
     }
 }

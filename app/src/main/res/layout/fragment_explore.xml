@@ -547,8 +547,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="60dp"
-                            android:text="Risolto"
-                            android:textColor="#358838"
+                            android:text="Preso in carico"
+                            android:textColor="#ED7014"
                             android:textSize="20dp"
                             android:textStyle="normal|italic"
                             app:layout_constraintStart_toEndOf="@+id/icon2"
@@ -1232,8 +1232,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="60dp"
-                            android:text="Risolto"
-                            android:textColor="#358838"
+                            android:text="Preso in carico"
+                            android:textColor="#ED7014"
                             android:textSize="20dp"
                             android:textStyle="normal|italic"
                             app:layout_constraintStart_toEndOf="@+id/icon2"
@@ -1368,24 +1368,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview5"
                 style="@style/Base.CardView"
@@ -1393,6 +1375,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
 
+                android:visibility="gone"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1533,8 +1516,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:layout_marginTop="8dp"
-                                android:text="Gabriele"
                                 android:onClick="onClickShowProfile"
+                                android:text="Gabriele"
                                 android:textColor="#000000"
                                 android:textSize="20dp"
                                 android:textStyle="bold"

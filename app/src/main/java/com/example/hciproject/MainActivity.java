@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -239,13 +240,31 @@ public class MainActivity extends AppCompatActivity {
         if (!ProfileFragment.usernameEditText222.isEnabled()) {
             ProfileFragment.usernameEditText222.setEnabled(true);
             ProfileFragment.editButton.setImageResource(R.drawable.ok);
+            ProfileFragment.editButton.setScaleX((float)1.5);
+            ProfileFragment.editButton.setScaleY((float)1.5);
+            ProfileFragment.usernameEditText222.requestFocus();
         } else {
-            ProfileFragment.usernameEditText222.setEnabled(false);
-            ProfileFragment.editButton.setImageResource(R.drawable.edit);
-            ProfileFragment.nome1.setText(ProfileFragment.usernameEditText222.getText().toString());
-            ProfileFragment.nome2.setText(ProfileFragment.usernameEditText222.getText().toString());
-            ProfileFragment.nome3.setText(ProfileFragment.usernameEditText222.getText().toString());
-            LoginActivity.UTENTE = ProfileFragment.usernameEditText222.getText().toString();
+            String x = ProfileFragment.usernameEditText222.getText().toString();
+            if (x.matches("")) {
+                ProfileFragment.usernameEditText222.setText(LoginActivity.UTENTE);
+                ProfileFragment.usernameEditText222.requestFocus();
+                Snackbar.make(view, "Lo username non può essere vuoto!", Snackbar.LENGTH_LONG)
+                        .setAction("Ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {}
+                        }).show();
+                return;
+            }
+            else {
+                ProfileFragment.usernameEditText222.setEnabled(false);
+                ProfileFragment.editButton.setImageResource(R.drawable.edit);
+                ProfileFragment.editButton.setScaleX((float)1);
+                ProfileFragment.editButton.setScaleY((float)1);
+                ProfileFragment.nome1.setText(ProfileFragment.usernameEditText222.getText().toString());
+                ProfileFragment.nome2.setText(ProfileFragment.usernameEditText222.getText().toString());
+                ProfileFragment.nome3.setText(ProfileFragment.usernameEditText222.getText().toString());
+                LoginActivity.UTENTE = ProfileFragment.usernameEditText222.getText().toString();
+            }
         }
     }
 }

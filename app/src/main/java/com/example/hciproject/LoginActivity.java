@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         recuperaPasswordCard = findViewById(R.id.recuperaPasswordCard);
         recuperaPasswordDark = findViewById(R.id.recuperaPasswordDark);
         RB = findViewById(R.id.RegistrationButton);
-        LB = findViewById(R.id.LoginButton);
+        LB = findViewById(R.id.loginButton);
     }
 
     public void onLoginSubmit(View view) {
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginSubmitGoogleFacebook(View view) {
         UTENTE = "Giovanni"; //TODO: da decidere
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, InfoActivity.class);
         startActivity(intent);
     }
 

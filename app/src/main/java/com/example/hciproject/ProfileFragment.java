@@ -49,7 +49,7 @@ public class ProfileFragment extends Fragment {
         MaterialTextView usernameEditText = view.findViewById(R.id.profileUsername);
         usernameEditText.setText(LoginActivity.UTENTE);
         usernameEditText222 = view.findViewById(R.id.UserName);
-        usernameEditText222.setHint(LoginActivity.UTENTE);
+        usernameEditText222.setText(LoginActivity.UTENTE);
         MaterialTextView usernameEditText2 = view.findViewById(R.id.textView);
         usernameEditText2.setText(LoginActivity.UTENTE);
         MaterialTextView usernameEditText3 = view.findViewById(R.id.textView2);
