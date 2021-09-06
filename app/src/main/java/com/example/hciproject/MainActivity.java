@@ -2,6 +2,7 @@ package com.example.hciproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     //public static menu nomeUtenteBottomMenu;
 
     public static boolean primaVolta = true;
+
+    //public static final int EXPLORE_POSITION = ;
 
     public static Map<String, Integer> colorsDictionary = new HashMap<String, Integer>();
     public static Map<String, Float> colorsMarkersDictionary = new HashMap<String, Float>();
@@ -208,6 +211,11 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment.rimuoviMarkerPopup();
     }
 
+    public void showInfo(View view) {
+        Intent intent = new Intent(this, InfoActivity.class);
+        startActivity(intent);
+    }
+
     /*
     public void confermaPopup(View view) {
 
@@ -232,6 +240,11 @@ public class MainActivity extends AppCompatActivity {
     public void mostraSullaMappa(View view) {
         HomeFragment.caricamentoDaMarkerCategoria = view.getTag().toString();
         HomeFragment.caricamentoDaMarker = true;
+        HomeFragment.HOME_POPUP_OPEN = false;
+        //ExploreFragment.scrollY = ExploreFragment.scrollView2.getChildAt(0).getTop();
+        //View c = ExploreFragment.scrollView2.getChildAt(0);
+        //int scrolly = -c.getTop() + ExploreFragment.scrollView2.getFirstVisiblePosition() * c.getHeight();
+        //Log.e("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(ExploreFragment.scrollView2.getChildAt(0).getTop()));
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -266,5 +279,20 @@ public class MainActivity extends AppCompatActivity {
                 LoginActivity.UTENTE = ProfileFragment.usernameEditText222.getText().toString();
             }
         }
+    }
+
+    public void logout(View view) {
+        if (HomeFragment.selectedImageUri != null) {
+            Log.e("aaaaaaaaaaaaaaaaaaa", String.valueOf(HomeFragment.selectedImageUri));
+            ProfileFragment.cardHidden.setVisibility(View.GONE);
+        }
+        HomeFragment.selectedImageUri = null;
+        HomeFragment.HOME_POPUP_OPEN = false;
+        HomeFragment.popupTitolo = null;
+        HomeFragment.popupCategoria = null;
+        HomeFragment.popupDescrizione = null;
+        HomeFragment.popupUsername = null;
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

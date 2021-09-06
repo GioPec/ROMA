@@ -18,6 +18,8 @@ public class LoginActivity extends AppCompatActivity {
     private MaterialCardView recuperaPasswordDark;
     private Button RB;
     private Button LB;
+    private Button GB;
+    private Button FB;
 
     public static String UTENTE;
 
@@ -34,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         recuperaPasswordDark = findViewById(R.id.recuperaPasswordDark);
         RB = findViewById(R.id.RegistrationButton);
         LB = findViewById(R.id.loginButton);
+        GB = findViewById(R.id.loginButton2);
+        FB = findViewById(R.id.loginButton3);
     }
 
     public void onLoginSubmit(View view) {
@@ -88,7 +92,8 @@ public class LoginActivity extends AppCompatActivity {
         recuperaPasswordDark.setVisibility(View.VISIBLE);
         RB.setEnabled(false);
         LB.setEnabled(false);
-
+        GB.setEnabled(false);
+        FB.setEnabled(false);
     }
 
     public void chiudiRecuperaPassword(View view) {
@@ -96,5 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         recuperaPasswordDark.setVisibility(View.INVISIBLE);
         RB.setEnabled(true);
         LB.setEnabled(true);
+        GB.setEnabled(true);
+        FB.setEnabled(true);
     }
 }

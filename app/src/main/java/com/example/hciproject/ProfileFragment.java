@@ -21,13 +21,13 @@ import com.google.android.material.textview.MaterialTextView;
 
 public class ProfileFragment extends Fragment {
 
-    TextView descrizioneHidden;
-    TextView categoriaHidden;
-    ImageView immagineHidden;
-    ImageView urgenteHidden;
-    TextView titoloHidden;
-    ImageButton markerButtonHidden;
-    com.google.android.material.card.MaterialCardView cardHidden;
+    public static TextView descrizioneHidden;
+    public static TextView categoriaHidden;
+    public static ImageView immagineHidden;
+    public static ImageView urgenteHidden;
+    public static TextView titoloHidden;
+    public static ImageButton markerButtonHidden;
+    public static com.google.android.material.card.MaterialCardView cardHidden;
 
     public static ImageView profileImage;
     public static ImageView imageView_hidden_1;

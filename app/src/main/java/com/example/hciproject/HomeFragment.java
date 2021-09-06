@@ -59,6 +59,10 @@ public class HomeFragment extends Fragment {
     public static boolean caricamentoDaMarker = false;
     public static String caricamentoDaMarkerCategoria;
 
+    public static LatLng HOME_LATLNG = new LatLng(41.9, 12.5);
+    public static float HOME_ZOOM = 11;
+    public static boolean HOME_POPUP_OPEN = false;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -150,7 +154,10 @@ public class HomeFragment extends Fragment {
                     new LatLng(42.100291, 12.824020)  // NE bounds
             );
             googleMap.setLatLngBoundsForCameraTarget(romeBounds);
-            //googleMap.moveCamera(CameraUpdateFactory.newLatLng(rome));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(HOME_LATLNG, HOME_ZOOM));
+
+            if (HOME_POPUP_OPEN) MainActivity.reportPopupCard.setVisibility(View.VISIBLE);
+            else MainActivity.reportPopupCard.setVisibility(View.INVISIBLE);
 
             /* Custom marker
             int height = 100;
@@ -246,6 +253,7 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onMapClick(LatLng latLng) {
                     MainActivity.reportPopupCard.setVisibility(View.INVISIBLE);
+                    HOME_POPUP_OPEN = false;
                 }
             });
 
@@ -301,6 +309,7 @@ public class HomeFragment extends Fragment {
                             @Override
                             public void run() {
                                 MainActivity.reportPopupCard.setVisibility(View.INVISIBLE);
+                                HOME_POPUP_OPEN = false;
                                 MainActivity.popupNewReport.setVisibility(View.VISIBLE);
                             }
                         }, 2000);
@@ -383,10 +392,20 @@ public class HomeFragment extends Fragment {
 
             ////////////////////////////////////////////////////////////////////////////////////////
 
+            googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+                @Override
+                public void onCameraIdle() {
+                    HOME_LATLNG = googleMap.getCameraPosition().target;
+                    HOME_ZOOM = googleMap.getCameraPosition().zoom;
+                    HOME_POPUP_OPEN = MainActivity.reportPopupCard.getVisibility()==View.VISIBLE;
+                }
+            });
+
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
 
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
                     int newVisibility=View.VISIBLE;
                     int firstPopUpVisibility = MainActivity.reportPopupCard.getVisibility();
                     if (firstPopUpVisibility==View.INVISIBLE) newVisibility=View.VISIBLE;

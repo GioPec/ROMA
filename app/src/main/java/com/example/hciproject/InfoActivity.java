@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class InfoActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +17,9 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
+        HomeFragment.HOME_POPUP_OPEN = false;
+        HomeFragment.HOME_LATLNG = new LatLng(41.9, 12.5);
+        HomeFragment.HOME_ZOOM = 11;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
