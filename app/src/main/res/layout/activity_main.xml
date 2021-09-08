@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!--tools:context=".MainActivity">-->
@@ -31,7 +32,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:onClick="createNewReport"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_add_circle_24" />
@@ -246,8 +247,17 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
-
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="350dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:translationZ="1dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/gsearch" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         String name = UserName.getText().toString();
         String pw = UserPassword.getText().toString();
 
-        if ((name.equals(RegistrationActivity.USER_NAME) && !(pw.equals(RegistrationActivity.USER_PASSWORD)))) {
+        if (((name.equals(RegistrationActivity.USER_NAME) || name.equals(RegistrationActivity.USER_EMAIL)) && !(pw.equals(RegistrationActivity.USER_PASSWORD)))) {
 
             Snackbar.make(view, "Password errata!", Snackbar.LENGTH_SHORT)
                     .setAction("Chiudi", new View.OnClickListener() {
@@ -66,7 +66,12 @@ public class LoginActivity extends AppCompatActivity {
                     }).show();
         }
         else  {
-            UTENTE = UserName.getText().toString();
+            if (RegistrationActivity.USER_NAME!=null) {
+                UTENTE = RegistrationActivity.USER_NAME;
+            }
+            else {
+                UTENTE = UserName.getText().toString();
+            }
 
             Intent intent = new Intent(this, InfoActivity.class);
             //intent.putExtra("EXTRA_NAME", name);

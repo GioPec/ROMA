@@ -51,36 +51,6 @@
         app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
 
     <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:adjustViewBounds="true"
-        android:background="#0000"
-        android:onClick="showInfo"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/logoutButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
-        android:adjustViewBounds="true"
-        android:background="#0000"
-        android:onClick="logout"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
         android:id="@+id/editButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -170,7 +140,8 @@
                             android:id="@+id/icon1_hidden"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
-
+                            android:onClick="fullscreen"
+                            android:tag="mia"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout_hidden_1"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout_hidden_1"
                             app:layout_constraintHorizontal_bias="0.064"
@@ -341,6 +312,22 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+                        <TextView
+                            android:id="@+id/rimuovi0"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:text="@string/RS"
+                            android:textColor="#AF0808"
+                            android:textSize="20dp"
+                            android:onClick="rimuoviSegnalazione"
+                            android:tag="0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -397,6 +384,8 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:src="@drawable/vegetazione"
+                            android:onClick="fullscreen"
+                            android:tag="vegetazione"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout1"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout1"
                             app:layout_constraintHorizontal_bias="0.07"
@@ -429,7 +418,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/list_of_subjects1" />
 
                         <ImageButton
-                            android:id="@+id/markerButton"
+                            android:id="@+id/markerButtonP"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="16dp"
@@ -541,6 +530,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+
                         <TextView
                             android:id="@+id/textView1"
                             android:layout_width="328dp"
@@ -553,6 +543,24 @@
                             android:textSize="20dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+                        <TextView
+                            android:id="@+id/rimuovi1"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:onClick="rimuoviSegnalazione"
+                            android:tag="1"
+                            android:text="@string/RS"
+                            android:textColor="#AF0808"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
                     </LinearLayout>
 
@@ -610,6 +618,8 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:src="@drawable/buca"
+                            android:onClick="fullscreen"
+                            android:tag="buca"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout2"
                             app:layout_constraintHorizontal_bias="0.064"
@@ -622,6 +632,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="100dp"
                             android:text="Buca"
+                            android:onClick="fullscreen"
+                            android:tag="buca"
                             android:textSize="24sp"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -642,7 +654,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageButton
-                            android:id="@+id/markerButton2"
+                            android:id="@+id/markerButton2P"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="16dp"
@@ -777,6 +789,22 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+                        <TextView
+                            android:id="@+id/rimuovi2"
+                            android:layout_width="328dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:onClick="rimuoviSegnalazione"
+                            android:tag="2"
+                            android:text="@string/RS"
+                            android:textColor="#AF0808"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -808,6 +836,146 @@
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toEndOf="@+id/profileUsername"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:background="#0000"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/settings"
+        android:onClick="settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rimuoviSegnalazioneDark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:color="#000000"
+        android:translationZ="7dp"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="154dp" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rimuoviSegnalazioneCard"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:translationZ="10dp"
+        android:visibility="gone"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.496">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recuperaPasswordCL"
+            android:layout_width="match_parent"
+            android:layout_height="192dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="3dp">
+
+            <TextView
+                android:id="@+id/recuperaPasswordTV"
+                android:layout_width="295dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="32dp"
+                android:text="Vuoi rimuovere questo post definitivamente?"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/recuperaPasswordButton"
+                android:layout_width="133dp"
+                android:layout_height="62dp"
+                android:layout_marginBottom="32dp"
+                android:onClick="rimuoviSegnalazioneOk"
+                android:text="Ok"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.847"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/recuperaPasswordButtonAnnulla"
+                android:layout_width="133dp"
+                android:layout_height="62dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="#B5B5B5"
+                android:onClick="rimuoviSegnalazioneAnnulla"
+                android:text="Annulla"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.152"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

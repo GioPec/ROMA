@@ -2,13 +2,13 @@ package com.example.hciproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -57,7 +58,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static boolean primaVolta = true;
 
-    //public static final int EXPLORE_POSITION = ;
+    public static ImageButton MB1, MB2, MB1H;
+    public static ImageView I1, I2, I1H;
+    public static ImageButton AB1, AB2, AB1H;
+
+    public static MaterialCardView rimuoviSegnalazioneCard;
+    public static MaterialCardView rimuoviSegnalazioneDark;
+    public static MaterialCardView cardDaRimuovere0;
+    public static MaterialCardView cardDaRimuovere1;
+    public static MaterialCardView cardDaRimuovere2;
 
     public static Map<String, Integer> colorsDictionary = new HashMap<String, Integer>();
     public static Map<String, Float> colorsMarkersDictionary = new HashMap<String, Float>();
@@ -91,6 +100,23 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(navListener);
         navView.setSelectedItemId(R.id.home_button);
 
+        //rimuoviSegnalazioneCard = findViewById(R.id.rimuoviSegnalazioneCard);
+        //rimuoviSegnalazioneDark= findViewById(R.id.rimuoviSegnalazioneDark);
+
+        /*
+        MB1 = findViewById(R.id.markerButtonP);
+        MB2 = findViewById(R.id.markerButton2P);
+        MB1H = findViewById(R.id.markerButton_hidden);
+
+        AB1 = findViewById(R.id.arrow_button1);
+        AB2 = findViewById(R.id.arrow_button1);
+        AB1H = findViewById(R.id.arrow_button1);
+
+        I1 = findViewById(R.id.icon1P);
+        I2 = findViewById(R.id.icon2P);
+        I1H = findViewById(R.id.icon1_hidden);
+         */
+
         addNewReportButton = findViewById(R.id.floating_action_button);
         reportPopupCard = findViewById(R.id.ReportPopupCard);
         titoloReportPopup = findViewById(R.id.popupTitle);
@@ -121,29 +147,6 @@ public class MainActivity extends AppCompatActivity {
                     new HomeFragment()).commit();
         }
     }
-
-    /*
-    private void initAppContents() {
-        String[] anna = {
-                "Anna",
-                "path_to_profile_image"
-        };
-        profilesData.put("anna", anna);
-        int[] annaReports = {1,2,3};
-        profilesReports.put("anna", annaReports);
-        String[] report1 = {
-                "Titolo",   //forse non necessario
-                "Latitudine",
-                "Longitudine",
-                "Tipologia",    //buca, malfunzionamento, segnalazione
-                "Urgente",      //boolean
-                "Stato",        //attivo, preso in consideraz., risolto
-                "Descrizione",
-                "Immagine"      //facoltativa, (path)
-        };
-        reportsData.put(1, report1);
-    }
-    */
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
         new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -283,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout(View view) {
         if (HomeFragment.selectedImageUri != null) {
-            Log.e("aaaaaaaaaaaaaaaaaaa", String.valueOf(HomeFragment.selectedImageUri));
             ProfileFragment.cardHidden.setVisibility(View.GONE);
         }
         HomeFragment.selectedImageUri = null;
@@ -294,5 +296,71 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment.popupUsername = null;
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    public void fullscreen(View view) {
+        switch (String.valueOf(view.getTag())) {
+            case "vegetazione":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.vegetazione;
+                break;
+            case "buca":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.buca;
+                break;
+            case "guasto":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.guasto;
+                break;
+            case "altroproblemastradale":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.altroproblemastradale;
+                break;
+            case "fauna":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.fauna;
+                break;
+            case "immondizia":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.immondizia;
+                break;
+            case "segnaletica":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.segnaletica;
+                break;
+            case "mia":
+                FullscreenImageActivity.fullscreenImageResource = 0;
+                break;
+        }
+        Intent intent = new Intent(this, FullscreenImageActivity.class);
+        startActivity(intent);
+    }
+
+    public void settings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public static int SEGN_DA_RIMUOVERE = 0;
+
+    public void rimuoviSegnalazione(View view) {
+        SEGN_DA_RIMUOVERE = Integer.parseInt(view.getTag().toString());
+        rimuoviSegnalazioneCard.setVisibility(View.VISIBLE);
+        rimuoviSegnalazioneDark.setVisibility(View.VISIBLE);
+    }
+
+    public void rimuoviSegnalazioneAnnulla(View view) {
+        rimuoviSegnalazioneCard.setVisibility(View.INVISIBLE);
+        rimuoviSegnalazioneDark.setVisibility(View.INVISIBLE);
+    }
+
+    public void rimuoviSegnalazioneOk(View view) {
+        switch (SEGN_DA_RIMUOVERE) {
+            case 0:
+                cardDaRimuovere0.setVisibility(View.GONE);
+                break;
+            case 1:
+                cardDaRimuovere1.setVisibility(View.GONE);
+                break;
+            case 2:
+                cardDaRimuovere2.setVisibility(View.GONE);
+                break;
+
+        }
+        rimuoviSegnalazioneCard.setVisibility(View.INVISIBLE);
+        rimuoviSegnalazioneDark.setVisibility(View.INVISIBLE);
     }
 }

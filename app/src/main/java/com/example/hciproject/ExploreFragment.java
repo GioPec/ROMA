@@ -1,7 +1,6 @@
 package com.example.hciproject;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +36,11 @@ public class ExploreFragment extends Fragment {
         });
         */
 
+        //TODO ???????????
         TextView usernameEditText = view.findViewById(R.id.nomeUtente1);
-        Log.e("AAAAAAAAAAAAA", usernameEditText.getText().toString());
+        //Log.e("AAAAAAAAAAAAA", usernameEditText.getText().toString());
         usernameEditText.setText("PadrePio");
-        Log.e("AAAAAAAAAAAAA", usernameEditText.getText().toString());
+        //Log.e("AAAAAAAAAAAAA", usernameEditText.getText().toString());
 
         TextView usernameEditText2 = view.findViewById(R.id.nomeUtente2);
         usernameEditText2.setText(LoginActivity.UTENTE);

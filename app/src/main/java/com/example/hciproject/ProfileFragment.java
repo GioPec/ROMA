@@ -46,6 +46,13 @@ public class ProfileFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        MainActivity.rimuoviSegnalazioneCard = view.findViewById(R.id.rimuoviSegnalazioneCard);
+        MainActivity.rimuoviSegnalazioneDark = view.findViewById(R.id.rimuoviSegnalazioneDark);
+
+        MainActivity.cardDaRimuovere0 = view.findViewById(R.id.base_cardview_hidden_1);
+        MainActivity.cardDaRimuovere1 = view.findViewById(R.id.base_cardview1);
+        MainActivity.cardDaRimuovere2 = view.findViewById(R.id.base_cardview2);
+
         MaterialTextView usernameEditText = view.findViewById(R.id.profileUsername);
         usernameEditText.setText(LoginActivity.UTENTE);
         usernameEditText222 = view.findViewById(R.id.UserName);

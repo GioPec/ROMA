@@ -84,6 +84,8 @@
 
                         <ImageView
                             android:id="@+id/icon1"
+                            android:onClick="fullscreen"
+                            android:tag="segnaletica"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:src="@drawable/segnaletica"
@@ -237,24 +239,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview1"
                 style="@style/Base.CardView"
@@ -262,6 +246,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
 
+                android:visibility="gone"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -304,7 +289,9 @@
                             android:id="@+id/icon1"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
+                            android:onClick="fullscreen"
                             android:src="@drawable/vegetazione"
+                            android:tag="vegetazione"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout1"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout1"
                             app:layout_constraintHorizontal_bias="0.07"
@@ -345,10 +332,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Vegetazione"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Vegetazione"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -391,8 +378,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:layout_marginTop="8dp"
-                                android:text="Utente #1809165"
                                 android:onClick="onClickShowMyProfile"
+                                android:text="Utente #1809165"
                                 android:textColor="#000000"
                                 android:textSize="20dp"
                                 android:textStyle="bold"
@@ -520,6 +507,8 @@
 
                         <ImageView
                             android:id="@+id/icon2"
+                            android:onClick="fullscreen"
+                            android:tag="altroproblemastradale"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:src="@drawable/altroproblemastradale"
@@ -759,6 +748,8 @@
 
                         <ImageView
                             android:id="@+id/icon3"
+                            android:onClick="fullscreen"
+                            android:tag="guasto"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
                             android:src="@drawable/guasto"
@@ -922,16 +913,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
-
-
-
-
-
-
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_cardview4"
                 style="@style/Base.CardView"
@@ -981,7 +962,9 @@
                             android:id="@+id/icon4"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
+                            android:onClick="fullscreen"
                             android:src="@drawable/fauna"
+                            android:tag="fauna"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout4"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout4"
                             app:layout_constraintHorizontal_bias="0.064"
@@ -1080,8 +1063,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:layout_marginTop="8dp"
-                                android:text="Gabriele"
                                 android:onClick="onClickShowProfile"
+                                android:text="Gabriele"
                                 android:textColor="#000000"
                                 android:textSize="20dp"
                                 android:textStyle="bold"
@@ -1165,6 +1148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
 
+                android:visibility="gone"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1207,7 +1191,9 @@
                             android:id="@+id/icon2"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
+                            android:onClick="fullscreen"
                             android:src="@drawable/buca"
+                            android:tag="buca"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout2"
                             app:layout_constraintHorizontal_bias="0.064"
@@ -1248,10 +1234,10 @@
                             android:adjustViewBounds="true"
                             android:background="#0000"
                             android:onClick="mostraSullaMappa"
-                            android:tag="Buca"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/marker"
+                            android:tag="Buca"
                             android:tooltipText="Mostra sulla mappa"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -1305,8 +1291,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:layout_marginTop="8dp"
-                                android:text="Utente #1809165"
                                 android:onClick="onClickShowMyProfile"
+                                android:text="Utente #1809165"
                                 android:textColor="#000000"
                                 android:textSize="20dp"
                                 android:textStyle="bold"

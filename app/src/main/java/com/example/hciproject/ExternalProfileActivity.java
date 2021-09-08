@@ -204,4 +204,35 @@ public class ExternalProfileActivity extends AppCompatActivity {
     public void goBack(View view) {
         finish();
     }
+
+    public void fullscreen(View view) {
+        switch (String.valueOf(view.getTag())) {
+            case "vegetazione":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.vegetazione;
+                break;
+            case "buca":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.buca;
+                break;
+            case "guasto":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.guasto;
+                break;
+            case "altroproblemastradale":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.altroproblemastradale;
+                break;
+            case "fauna":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.fauna;
+                break;
+            case "immondizia":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.immondizia;
+                break;
+            case "segnaletica":
+                FullscreenImageActivity.fullscreenImageResource = R.drawable.segnaletica;
+                break;
+            case "mia":
+                FullscreenImageActivity.fullscreenImageResource = 0;
+                break;
+        }
+        Intent intent = new Intent(this, FullscreenImageActivity.class);
+        startActivity(intent);
+    }
 }
