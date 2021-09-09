@@ -45,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
         SIB.setEnabled(true);
     }
 
+    //LOGOUT
     public void seiSicuroOk(View view) {
         recuperaPasswordCard.setVisibility(View.INVISIBLE);
         recuperaPasswordDark.setVisibility(View.INVISIBLE);
@@ -61,6 +62,9 @@ public class SettingsActivity extends AppCompatActivity {
         HomeFragment.popupCategoria = null;
         HomeFragment.popupDescrizione = null;
         HomeFragment.popupUsername = null;
+        ProfileFragment.CARD_0_REMOVED = false;
+        ProfileFragment.CARD_1_REMOVED = false;
+        ProfileFragment.CARD_2_REMOVED = false;
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

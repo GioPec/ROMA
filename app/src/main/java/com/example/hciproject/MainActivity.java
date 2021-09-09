@@ -284,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
     public void logout(View view) {
         if (HomeFragment.selectedImageUri != null) {
             ProfileFragment.cardHidden.setVisibility(View.GONE);
@@ -294,9 +295,14 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment.popupCategoria = null;
         HomeFragment.popupDescrizione = null;
         HomeFragment.popupUsername = null;
+        ProfileFragment.CARD_0_REMOVED = false;
+        ProfileFragment.CARD_1_REMOVED = false;
+        ProfileFragment.CARD_2_REMOVED = false;
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+     */
 
     public void fullscreen(View view) {
         switch (String.valueOf(view.getTag())) {
@@ -351,12 +357,16 @@ public class MainActivity extends AppCompatActivity {
         switch (SEGN_DA_RIMUOVERE) {
             case 0:
                 cardDaRimuovere0.setVisibility(View.GONE);
+                ProfileFragment.CARD_0_REMOVED = true;
+                HomeFragment.newMarker.remove();
                 break;
             case 1:
                 cardDaRimuovere1.setVisibility(View.GONE);
+                ProfileFragment.CARD_1_REMOVED = true;
                 break;
             case 2:
                 cardDaRimuovere2.setVisibility(View.GONE);
+                ProfileFragment.CARD_2_REMOVED = true;
                 break;
 
         }

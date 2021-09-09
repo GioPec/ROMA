@@ -40,6 +40,10 @@ public class ProfileFragment extends Fragment {
     public static TextView nome2;
     public static TextView nome3;
 
+    public static boolean CARD_0_REMOVED = false;
+    public static boolean CARD_1_REMOVED = false;
+    public static boolean CARD_2_REMOVED = false;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,9 +53,9 @@ public class ProfileFragment extends Fragment {
         MainActivity.rimuoviSegnalazioneCard = view.findViewById(R.id.rimuoviSegnalazioneCard);
         MainActivity.rimuoviSegnalazioneDark = view.findViewById(R.id.rimuoviSegnalazioneDark);
 
-        MainActivity.cardDaRimuovere0 = view.findViewById(R.id.base_cardview_hidden_1);
-        MainActivity.cardDaRimuovere1 = view.findViewById(R.id.base_cardview1);
-        MainActivity.cardDaRimuovere2 = view.findViewById(R.id.base_cardview2);
+        if (!CARD_0_REMOVED) { MainActivity.cardDaRimuovere0 = view.findViewById(R.id.base_cardview_hidden_1); }
+        if (!CARD_1_REMOVED) { MainActivity.cardDaRimuovere1 = view.findViewById(R.id.base_cardview1); }
+        if (!CARD_2_REMOVED) { MainActivity.cardDaRimuovere2 = view.findViewById(R.id.base_cardview2); }
 
         MaterialTextView usernameEditText = view.findViewById(R.id.profileUsername);
         usernameEditText.setText(LoginActivity.UTENTE);
@@ -82,24 +86,26 @@ public class ProfileFragment extends Fragment {
 
         /////////////////////////////////////////////////////////////
 
-        if (HomeFragment.selectedImageUri != null) {
-            descrizioneHidden = view.findViewById(R.id.textView1_hidden_1);
-            categoriaHidden = view.findViewById(R.id.list_of_subjects1_hidden);
-            immagineHidden  = view.findViewById(R.id.icon1_hidden);
-            titoloHidden = view.findViewById(R.id.textView1_hidden_1_1);
-            urgenteHidden = view.findViewById(R.id.imageViewUrg);
-            markerButtonHidden = view.findViewById(R.id.markerButton_hidden);
+        if (!CARD_0_REMOVED) {
+            if (HomeFragment.selectedImageUri != null) {
+                descrizioneHidden = view.findViewById(R.id.textView1_hidden_1);
+                categoriaHidden = view.findViewById(R.id.list_of_subjects1_hidden);
+                immagineHidden = view.findViewById(R.id.icon1_hidden);
+                titoloHidden = view.findViewById(R.id.textView1_hidden_1_1);
+                urgenteHidden = view.findViewById(R.id.imageViewUrg);
+                markerButtonHidden = view.findViewById(R.id.markerButton_hidden);
 
-            descrizioneHidden.setText(HomeFragment.popupDescrizione);
-            categoriaHidden.setText(HomeFragment.popupCategoria);
-            titoloHidden.setText(HomeFragment.popupTitolo);
-            immagineHidden.setImageURI(HomeFragment.selectedImageUri);
-            markerButtonHidden.setTag("default");
-            if (HomeFragment.popupUrgente) urgenteHidden.setVisibility(View.VISIBLE);
+                descrizioneHidden.setText(HomeFragment.popupDescrizione);
+                categoriaHidden.setText(HomeFragment.popupCategoria);
+                titoloHidden.setText(HomeFragment.popupTitolo);
+                immagineHidden.setImageURI(HomeFragment.selectedImageUri);
+                markerButtonHidden.setTag("default");
+                if (HomeFragment.popupUrgente) urgenteHidden.setVisibility(View.VISIBLE);
 
-            cardHidden = view.findViewById(R.id.base_cardview_hidden_1);
-            cardHidden.setStrokeColor((MainActivity.colorsDictionary.get(HomeFragment.popupCategoria)));
-            cardHidden.setVisibility(View.VISIBLE);
+                cardHidden = view.findViewById(R.id.base_cardview_hidden_1);
+                cardHidden.setStrokeColor((MainActivity.colorsDictionary.get(HomeFragment.popupCategoria)));
+                cardHidden.setVisibility(View.VISIBLE);
+            }
         }
 
         /////////////////////////////////////////////////////////////
@@ -137,6 +143,9 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+        if (CARD_0_REMOVED) {
+            hiddenView0.setVisibility(View.GONE);
+        }
 
         ////////////////   1   /////////////////
 
@@ -172,6 +181,9 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+        if (CARD_1_REMOVED) {
+            cardView1.setVisibility(View.GONE);
+        }
 
         /////////////////   2   ///////////////////
 
@@ -206,6 +218,9 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+        if (CARD_2_REMOVED) {
+            cardView2.setVisibility(View.GONE);
+        }
 
         /////////////////////////////////////////////////
 

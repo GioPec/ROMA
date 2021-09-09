@@ -169,12 +169,14 @@ public class HomeFragment extends Fragment {
 
             ////////////////////////////////////////////////////////////////////////////////////////
 
-            LatLng ll1 = new LatLng(41.942574, 12.473963);
-            marker1 = googleMap.addMarker(new MarkerOptions()
-                    .position(ll1)
-                    .snippet("Buca")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                    );
+            if (!ProfileFragment.CARD_2_REMOVED) {
+                LatLng ll1 = new LatLng(41.942574, 12.473963);
+                marker1 = googleMap.addMarker(new MarkerOptions()
+                        .position(ll1)
+                        .snippet("Buca")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                );
+            }
 
             LatLng ll2 = new LatLng(41.88, 12.42);
             marker2 = googleMap.addMarker(new MarkerOptions()
@@ -190,12 +192,14 @@ public class HomeFragment extends Fragment {
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
             );
 
-            LatLng ll4 = new LatLng(41.898038, 12.562988);
-            marker4 = googleMap.addMarker(new MarkerOptions()
-                    .position(ll4)
-                    .snippet("Vegetazione")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-            );
+            if (!ProfileFragment.CARD_1_REMOVED) {
+                LatLng ll4 = new LatLng(41.898038, 12.562988);
+                marker4 = googleMap.addMarker(new MarkerOptions()
+                        .position(ll4)
+                        .snippet("Vegetazione")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                );
+            }
 
             LatLng ll5 = new LatLng(41.949815, 12.455857);
             marker5 = googleMap.addMarker(new MarkerOptions()
@@ -218,14 +222,16 @@ public class HomeFragment extends Fragment {
                     .icon(BitmapDescriptorFactory.defaultMarker(305.0f))
             );
 
-            if (popupTitolo!=null) {
-                newMarker = googleMap.addMarker(new MarkerOptions()
-                        .position(popupLatLngMarker)
-                        .title(popupTitolo)
-                        .snippet(popupCategoria)
-                        .icon(BitmapDescriptorFactory.defaultMarker(MainActivity.colorsMarkersDictionary.get(popupCategoria)))
-                );
-                newMarker.setTag(selectedImageUri);
+            if (!ProfileFragment.CARD_0_REMOVED) {
+                if (popupTitolo != null) {
+                    newMarker = googleMap.addMarker(new MarkerOptions()
+                            .position(popupLatLngMarker)
+                            .title(popupTitolo)
+                            .snippet(popupCategoria)
+                            .icon(BitmapDescriptorFactory.defaultMarker(MainActivity.colorsMarkersDictionary.get(popupCategoria)))
+                    );
+                    newMarker.setTag(selectedImageUri);
+                }
             }
 
             //////////////////////////////   caricamento da marker   ///////////////////////////////
