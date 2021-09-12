@@ -7,13 +7,6 @@
     <!--tools:context=".MainActivity">-->
 
 
-
-
-
-
-
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/flFragment"
         android:layout_width="match_parent"
@@ -118,7 +111,6 @@
                     app:layout_constraintVertical_bias="0.0" />
 
 
-
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -201,9 +193,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
+                    android:backgroundTint="#B5B5B5"
                     android:onClick="AnnullaPopup"
                     android:text="Annulla"
-                    android:backgroundTint="#B5B5B5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.132"
                     app:layout_constraintStart_toStartOf="parent"
@@ -270,6 +262,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

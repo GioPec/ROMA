@@ -40,9 +40,9 @@
         android:layout_marginTop="68dp"
         android:background="@null"
         android:enabled="false"
-        android:text="Username"
         android:inputType="textPersonName"
         android:maxLength="12"
+        android:text="Username"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -320,11 +320,11 @@
                             android:layout_marginTop="0dp"
                             android:layout_marginBottom="16dp"
                             android:gravity="center"
+                            android:onClick="rimuoviSegnalazione"
+                            android:tag="0"
                             android:text="@string/RS"
                             android:textColor="#AF0808"
                             android:textSize="20dp"
-                            android:onClick="rimuoviSegnalazione"
-                            android:tag="0"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -383,8 +383,8 @@
                             android:id="@+id/icon1"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
-                            android:src="@drawable/vegetazione"
                             android:onClick="fullscreen"
+                            android:src="@drawable/vegetazione"
                             android:tag="vegetazione"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout1"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout1"
@@ -523,7 +523,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:text="Mio nonno non riesce più a percorrerlo"
                             android:textColor="#7C7C7C"
                             android:textSize="24sp"
                             android:textStyle="bold"
@@ -617,8 +617,8 @@
                             android:id="@+id/icon2"
                             android:layout_width="110dp"
                             android:layout_height="110dp"
-                            android:src="@drawable/buca"
                             android:onClick="fullscreen"
+                            android:src="@drawable/buca"
                             android:tag="buca"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="@+id/fixed_layout2"
@@ -631,9 +631,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="100dp"
-                            android:text="Buca"
                             android:onClick="fullscreen"
                             android:tag="buca"
+                            android:text="Buca"
                             android:textSize="24sp"
                             app:layout_constraintBottom_toBottomOf="@+id/fixed_layout2"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -770,7 +770,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="Mia nonna non riesce più a percorrerlo"
+                            android:text="Attenzione! Buca profonda al lato della strada!"
                             android:textColor="#7C7C7C"
                             android:textSize="24sp"
                             android:textStyle="bold"
@@ -846,36 +846,12 @@
         android:layout_marginEnd="16dp"
         android:adjustViewBounds="true"
         android:background="#0000"
+        android:onClick="settings"
         android:padding="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/settings"
-        android:onClick="settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <com.google.android.material.card.MaterialCardView
@@ -956,26 +932,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
