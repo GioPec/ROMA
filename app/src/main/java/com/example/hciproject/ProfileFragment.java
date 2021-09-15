@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,13 @@ public class ProfileFragment extends Fragment {
     public static boolean CARD_0_REMOVED = false;
     public static boolean CARD_1_REMOVED = false;
     public static boolean CARD_2_REMOVED = false;
+
+    public static boolean ACCESS_WITH_GOOGLE = false;
+
+    public static ScrollView scrollView;
+
+    public static boolean HIDDEN_CARD_PRESENTE = false;
+    public static boolean CARD1_PRESENTE = true;
 
     @Nullable
     @Override
@@ -83,6 +91,8 @@ public class ProfileFragment extends Fragment {
         nome1 = view.findViewById(R.id.textView_hidden_1);
         nome2 = view.findViewById(R.id.textView);
         nome3 = view.findViewById(R.id.textView2);
+
+        scrollView = view.findViewById(R.id.scrollView2_profile);
 
         /////////////////////////////////////////////////////////////
 
@@ -147,6 +157,7 @@ public class ProfileFragment extends Fragment {
             hiddenView0.setVisibility(View.GONE);
         }
 
+
         ////////////////   1   /////////////////
 
         CardView cardView1 = view.findViewById(R.id.base_cardview1);
@@ -185,6 +196,7 @@ public class ProfileFragment extends Fragment {
             cardView1.setVisibility(View.GONE);
         }
 
+
         /////////////////   2   ///////////////////
 
         CardView cardView2 = view.findViewById(R.id.base_cardview2);
@@ -222,7 +234,51 @@ public class ProfileFragment extends Fragment {
             cardView2.setVisibility(View.GONE);
         }
 
+
         /////////////////////////////////////////////////
+
+        if(MainActivity.ID_BOTTONE==100){
+            hiddenView0.setVisibility(View.VISIBLE);
+            arrow0.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
+
+        if(MainActivity.ID_BOTTONE==101){
+            if (HIDDEN_CARD_PRESENTE) {
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.scrollTo(0, 400);
+                    }
+                });
+            }
+            hiddenView1.setVisibility(View.VISIBLE);
+            arrow1.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
+
+        if(MainActivity.ID_BOTTONE==102){
+            if (HIDDEN_CARD_PRESENTE && CARD1_PRESENTE) {
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.scrollTo(0, 800);
+                    }
+                });
+            }
+            else if (HIDDEN_CARD_PRESENTE || CARD1_PRESENTE) {
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.scrollTo(0, 400);
+                    }
+                });
+            }
+            hiddenView2.setVisibility(View.VISIBLE);
+            arrow2.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
+
+        /////////////////////////////////////////////////////
+
+        if (ACCESS_WITH_GOOGLE) profileImage.setImageResource(R.drawable.avatar);
 
         return view;
         //return inflater.inflate(R.layout.fragment_profile, container, false);

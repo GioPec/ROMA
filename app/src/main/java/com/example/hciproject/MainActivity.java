@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static Window theWindow;
 
-    //public static menu nomeUtenteBottomMenu;
+    public static BottomNavigationView bottomNavigationView;
 
     public static boolean primaVolta = true;
 
@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static Map<String, Integer> colorsDictionary = new HashMap<String, Integer>();
     public static Map<String, Float> colorsMarkersDictionary = new HashMap<String, Float>();
+
+    public static int ID_BOTTONE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
         bottoneConferma = findViewById(R.id.button3);
         buttonImage = findViewById(R.id.buttonImage);
 
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
         //nomeUtenteBottomMenu = findViewById(R.id.profile);
         //nomeUtenteBottomMenu.setText(LoginActivity.UTENTE);
 
@@ -148,11 +152,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    Fragment selectedFragment;
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
         new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = new HomeFragment();
+                selectedFragment = new HomeFragment();
 
                 switch (item.getItemId()) {
                     case R.id.home:
@@ -191,11 +197,18 @@ public class MainActivity extends AppCompatActivity {
     public void mostraTuttoOnClick(View view) {
         //AlphaAnimation buttonClick = new AlphaAnimation(0.2f, 1.0f);
         //view.startAnimation(buttonClick);
-        TextView popupU = view.findViewById(R.id.popupUsername);
-        //TODO FIX
-        if (true) { Intent intent = new Intent(this, ExternalProfileActivity.class); startActivity(intent); }   //popupU.getText().toString().equals("Gabriele")
-        //else getFragmentManager().beginTransaction().replace(R.id.flFragment, new ProfileFragment()).addToBackStack(null).commit();
 
+        TextView popupU = view.findViewById(R.id.popupUsername);
+        if (!popupU.getText().toString().equals("Gabriele")) {
+            //mListener.changeFragment(2);
+            //addNewReportButton.setVisibility(View.VISIBLE); //mostra bottone solo in maps fragment
+            reportPopupCard.setVisibility(View.INVISIBLE);
+            MainActivity.popupNewReport.setVisibility(View.INVISIBLE);
+            selectedFragment = new ProfileFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, selectedFragment).commit();
+            bottomNavigationView.setSelectedItemId(R.id.profile);
+        }else{
+            Intent intent = new Intent(this, ExternalProfileActivity.class); startActivity(intent); }   //popupU.getText().toString().equals("Gabriele")
     }
 
     public void onClickShowProfile(View view) {
@@ -247,7 +260,6 @@ public class MainActivity extends AppCompatActivity {
         //ExploreFragment.scrollY = ExploreFragment.scrollView2.getChildAt(0).getTop();
         //View c = ExploreFragment.scrollView2.getChildAt(0);
         //int scrolly = -c.getTop() + ExploreFragment.scrollView2.getFirstVisiblePosition() * c.getHeight();
-        //Log.e("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(ExploreFragment.scrollView2.getChildAt(0).getTop()));
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -356,11 +368,13 @@ public class MainActivity extends AppCompatActivity {
     public void rimuoviSegnalazioneOk(View view) {
         switch (SEGN_DA_RIMUOVERE) {
             case 0:
+                ProfileFragment.HIDDEN_CARD_PRESENTE = false;
                 cardDaRimuovere0.setVisibility(View.GONE);
                 ProfileFragment.CARD_0_REMOVED = true;
                 HomeFragment.newMarker.remove();
                 break;
             case 1:
+                ProfileFragment.CARD1_PRESENTE = false;
                 cardDaRimuovere1.setVisibility(View.GONE);
                 ProfileFragment.CARD_1_REMOVED = true;
                 break;

@@ -23,4 +23,6 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void goBack(View view) { finish(); }
 }

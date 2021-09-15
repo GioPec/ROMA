@@ -47,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     //LOGOUT
     public void seiSicuroOk(View view) {
+        ProfileFragment.ACCESS_WITH_GOOGLE = false;
         recuperaPasswordCard.setVisibility(View.INVISIBLE);
         recuperaPasswordDark.setVisibility(View.INVISIBLE);
         LB.setEnabled(true);

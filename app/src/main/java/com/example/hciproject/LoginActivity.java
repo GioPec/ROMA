@@ -23,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public static String UTENTE;
 
+    public static boolean COME_FROM_REGISTRATION_COMPLETE = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,17 @@ public class LoginActivity extends AppCompatActivity {
         LB = findViewById(R.id.loginButton);
         GB = findViewById(R.id.loginButton2);
         FB = findViewById(R.id.loginButton3);
+
+        if (COME_FROM_REGISTRATION_COMPLETE) {
+            COME_FROM_REGISTRATION_COMPLETE = false;
+            Snackbar.make(findViewById(android.R.id.content), "Registrazione effettuata. Benvenuto!", Snackbar.LENGTH_LONG)
+                    .setAction("Chiudi", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }).show();
+        }
     }
 
     public void onLoginSubmit(View view) {
@@ -54,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String name = UserName.getText().toString();
         String pw = UserPassword.getText().toString();
+        ProfileFragment.ACCESS_WITH_GOOGLE = false;
 
         if (((name.equals(RegistrationActivity.USER_NAME) || name.equals(RegistrationActivity.USER_EMAIL)) && !(pw.equals(RegistrationActivity.USER_PASSWORD)))) {
 
@@ -81,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSubmitGoogleFacebook(View view) {
-        UTENTE = "Giovanni"; //TODO: da decidere
+        UTENTE = "Giovanni";
+        ProfileFragment.ACCESS_WITH_GOOGLE = true;
 
         Intent intent = new Intent(this, InfoActivity.class);
         startActivity(intent);

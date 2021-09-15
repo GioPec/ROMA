@@ -84,6 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     }).show();
         }
         else {
+            LoginActivity.COME_FROM_REGISTRATION_COMPLETE = true;
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }

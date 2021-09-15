@@ -215,12 +215,12 @@ public class HomeFragment extends Fragment {
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
             );
 
-            LatLng ll7 = new LatLng(41.848584, 12.486243);
-            marker5 = googleMap.addMarker(new MarkerOptions()
-                    .position(ll7)
-                    .snippet("Immondizia")
-                    .icon(BitmapDescriptorFactory.defaultMarker(305.0f))
-            );
+            //LatLng ll7 = new LatLng(41.848584, 12.486243);
+            //marker5 = googleMap.addMarker(new MarkerOptions()
+            //        .position(ll7)
+            //        .snippet("Immondizia")
+            //        .icon(BitmapDescriptorFactory.defaultMarker(305.0f))
+            //);
 
             if (!ProfileFragment.CARD_0_REMOVED) {
                 if (popupTitolo != null) {
@@ -271,6 +271,7 @@ public class HomeFragment extends Fragment {
                 public void onMapLongClick(LatLng latLng) {
 
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                    Log.e("AAAAAAAAAAAAAAAAA", String.valueOf(geocoder));
                     List<Address> addresses = null;
                     Address obj = null;
                     String add = "";
@@ -337,11 +338,12 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    if (selectedImageUri!=null) {
+                    popupTitolo = MainActivity.popupTitolo.getText().toString();
+                    popupDescrizione = MainActivity.popupDescrizione.getText().toString();
 
-                        popupTitolo = MainActivity.popupTitolo.getText().toString();
+                    if (selectedImageUri!=null && !popupTitolo.equals("") && !popupDescrizione.equals("")) {
+
                         popupCategoria = MainActivity.popupCategoria.getSelectedItem().toString();
-                        //popupDescrizione = MainActivity.popupDescrizione.getText().toString();
                         popupUsername = LoginActivity.UTENTE;
                         popupUrgente = MainActivity.popupUrgente.isChecked();
 
@@ -366,13 +368,15 @@ public class HomeFragment extends Fragment {
                                     public void onClick(View v) {}
                                 }).show();
 
+                        ProfileFragment.HIDDEN_CARD_PRESENTE = true;
+
                         //InputMethodManager imm = (InputMethodManager) getSystemService(getContext()); //TODO
                         //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
                         //MainActivity.theWindow.setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN );
                     }
                     else {
-                        Snackbar.make(view, "Aggiungi un'immagine!", Snackbar.LENGTH_LONG)
+                        Snackbar.make(view, "Completa tutti i campi!", Snackbar.LENGTH_LONG)
                                 .setAction("Ok", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {}
@@ -419,6 +423,7 @@ public class HomeFragment extends Fragment {
 
                     if (marker.getTag()!=null && marker.getTag()==selectedImageUri)     //marker aggiunto dall'utente
                     {
+                        MainActivity.ID_BOTTONE  = 100;
                         MainActivity.titoloReportPopup.setText(popupTitolo);
                         MainActivity.categoriaReportPopup.setText(popupCategoria);
                         //MainActivity.descrizioneReportPopup.setText(popupDescrizione);
@@ -429,6 +434,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Buca"))
                     {
+                        MainActivity.ID_BOTTONE  = 102;
                         MainActivity.titoloReportPopup.setText("Attenzione! Buca profonda al lato della strada!");
                         MainActivity.categoriaReportPopup.setText("Buca");
                         //MainActivity.descrizioneReportPopup.setText("Fate attenzione all'angolo tra via delle Primule e via delle Violette, soprattutto se viaggiate in moto...");
@@ -439,6 +445,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Segnaletica"))
                     {
+                        MainActivity.ID_BOTTONE  = 1;
                         MainActivity.titoloReportPopup.setText("Mi è arrivata la multa, ma il cartello non si vedeva...");
                         MainActivity.categoriaReportPopup.setText("Segnaletica");
                         //MainActivity.descrizioneReportPopup.setText("In questo tratto di strada il sorpasso è proibito. Peccato che non è segnalato, o meglio, il cartello che dovrebbe avvisare di ciò è stato...");
@@ -449,6 +456,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Altro problema stradale"))
                     {
+                        MainActivity.ID_BOTTONE  = 2;
                         MainActivity.titoloReportPopup.setText("Sono dieci mesi che non funziona! Fate qualcosa!");
                         MainActivity.categoriaReportPopup.setText("Altro problema stradale");
                         //MainActivity.descrizioneReportPopup.setText("È passato quasi un anno e ancora nessuna traccia di intervento da parte del comune. Tutte le sere tornando a casa ho paura...");
@@ -459,6 +467,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Vegetazione"))
                     {
+                        MainActivity.ID_BOTTONE  = 101;
                         MainActivity.titoloReportPopup.setText("Mia nonna non riesce più a percorrerlo");
                         MainActivity.categoriaReportPopup.setText("Vegetazione");
                         //MainActivity.descrizioneReportPopup.setText("Come da titolo, faccio questa segnalazione per portare alla vostra attenzione un problema urgente di degrado urbano...");
@@ -469,6 +478,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Fauna"))
                     {
+                        MainActivity.ID_BOTTONE  = 4;
                         MainActivity.titoloReportPopup.setText("Fate attenzione, avvistati cinghiali in zona!!");
                         MainActivity.categoriaReportPopup.setText("Fauna");
                         //MainActivity.descrizioneReportPopup.setText("In 40 anni non ho mai visto una roba del genere, ormai non hanno manco più paura delle macchine! O li catturate o me li mangio...");
@@ -479,6 +489,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Guasto"))
                     {
+                        MainActivity.ID_BOTTONE  = 3;
                         MainActivity.titoloReportPopup.setText("Mettetele in funzione una volta per tutte!");
                         MainActivity.categoriaReportPopup.setText("Guasto");
                         //MainActivity.descrizioneReportPopup.setText("Non le ho mai viste in funzione, mi tocca sempre prendere le scale a piedi. È un disagio per me e per molti altri pendolari...");
@@ -489,6 +500,7 @@ public class HomeFragment extends Fragment {
                     }
                     else if (marker.getSnippet().equals("Immondizia"))
                     {
+                        MainActivity.ID_BOTTONE  = 0;
                         MainActivity.titoloReportPopup.setText("Vergogna!!!");
                         MainActivity.categoriaReportPopup.setText("Immondizia");
                         //MainActivity.descrizioneReportPopup.setText("Devo fare lo slalom per uscire di casa!!");

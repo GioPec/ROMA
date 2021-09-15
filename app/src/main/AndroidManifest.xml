@@ -18,7 +18,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.HCIproject">
-        <activity android:name=".ExternalProfileActivity"></activity>/>
+        <activity android:name=".ExternalProfileActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

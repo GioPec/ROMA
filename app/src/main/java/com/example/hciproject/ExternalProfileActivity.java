@@ -7,18 +7,22 @@ import android.transition.TransitionManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class ExternalProfileActivity extends AppCompatActivity {
 
+    public static ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_external_profile);
 
         /////////////////////////////////////////////////////////////
+
+        scrollView = findViewById(R.id.scrollView2);
 
         ////////////////   1   /////////////////
 
@@ -54,6 +58,10 @@ public class ExternalProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        if(MainActivity.ID_BOTTONE==1){
+            hiddenView1.setVisibility(View.VISIBLE);
+            arrow1.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
 
         /////////////////   2   ///////////////////
 
@@ -88,6 +96,16 @@ public class ExternalProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        if(MainActivity.ID_BOTTONE==2){
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.scrollTo(0, 400);
+                }
+            });
+            hiddenView2.setVisibility(View.VISIBLE);
+            arrow2.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
 
         /////////////////   3   ///////////////////
 
@@ -122,6 +140,16 @@ public class ExternalProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        if(MainActivity.ID_BOTTONE==3){
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.scrollTo(0, 800);
+                }
+            });
+            hiddenView3.setVisibility(View.VISIBLE);
+            arrow3.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
 
         /////////////////   4   ///////////////////
 
@@ -156,6 +184,16 @@ public class ExternalProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        if(MainActivity.ID_BOTTONE==4){
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.scrollTo(0, 1300);
+                }
+            });
+            hiddenView4.setVisibility(View.VISIBLE);
+            arrow4.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
 
         /////////////////   5   ///////////////////
 
