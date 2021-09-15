@@ -1,6 +1,7 @@
 # R.O.M.A.
 
 Project for the Human-Computer Interaction course.
+
 Sapienza Università di Roma, A.Y. 2020/2021
 
 ## Developers
@@ -11,4 +12,5 @@ Sapienza Università di Roma, A.Y. 2020/2021
 ## Warning
 
 This application is only a front-end simulation of a functioning Android app.
+
 The back-end implementation is highly deprecated and should not be read, ever.
